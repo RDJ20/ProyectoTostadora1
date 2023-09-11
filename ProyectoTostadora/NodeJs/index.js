@@ -14,9 +14,10 @@ app.use((req, res, next) => {
 
 app.use('/api', routes); 
 
+app.use(express.static('../Pagina Web/Login'));
 
 
-
-app.listen(3000, () => {
+app.listen(3000,  '0.0.0.0',() => {
   console.log('Servidor iniciado en el puerto 3000');
+
 });
