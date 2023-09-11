@@ -8,6 +8,13 @@ const connection = mysql.createConnection({
   database: 'prueba'
 });
 
+
+// host: 'raspberrypi.local',
+// user: 'rafae',
+// password: 'pi',
+// database: 'prueba'
+// });
+
 connection.connect((err) => {
   if (err) {
     console.error('Error al conectarse a la base de datos:', err);
