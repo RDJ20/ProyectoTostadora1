@@ -1,20 +1,23 @@
-
 var temperaturaMax = 180;
 export let tiempo = 40;
 let dataset = [];
 var A = 100;
 var mu = 20;
 var sigma = 5;
+var baseUrl = '';
+
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+  baseUrl = 'http://localhost:3000';
+} else {
+  baseUrl = 'http://raspberrypi.local:3000';
+}
 
 for (var i = 0; i <= tiempo; i++) {
   var ft = A * Math.exp(-Math.pow(i - mu, 2) / (2 * Math.pow(sigma, 2)));
   dataset.push(ft);
 }
 
-
-
 function verificarVariablesLocales() {
-
   const nombre = localStorage.getItem('nombre');
   const datos = JSON.parse(localStorage.getItem('datos'));
   const temperatura = localStorage.getItem('temperatura');
@@ -22,8 +25,7 @@ function verificarVariablesLocales() {
   const rpm = localStorage.getItem('rpm');
 
   if (nombre && datos && temperatura && tiempo1 && rpm) {
-    console.log('Todas las variables están definidas');
-    document.getElementById('nombreP').textContent = nombre
+    document.getElementById('nombreP').textContent = nombre;
     dataset = datos;
     document.getElementById('tiempoFinal').textContent = temperatura;
     document.getElementById('tempFinal').textContent = tiempo1;
@@ -35,13 +37,8 @@ function verificarVariablesLocales() {
     localStorage.removeItem('temperatura');
     localStorage.removeItem('tiempo');
     localStorage.removeItem('rpm');
-
-  } 
-  else {
-    console.log('Una o más variables no están definidas');
   }
 }
-
 
 verificarVariablesLocales();
 
@@ -65,10 +62,10 @@ function crearRealtimeChart() {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-          legend: {
-            display: false 
-          }
-        },
+        legend: {
+          display: false 
+        }
+      },
       scales: {
         x: {
           display: true,
@@ -128,36 +125,32 @@ function crearBackgroundChart(dataset) {
           beginAtZero: true,
           max: tiempo,
           grid: {
-            color: 'rgba(0, 0, 0, 0)' // cambia el color de la cuadrícula en el eje X
+            color: 'rgba(0, 0, 0, 0)'
           },
           ticks: {
-            color: 'rgba(0, 0, 0, 0)' // color de las etiquetas del eje X
+            color: 'rgba(0, 0, 0, 0)'
           }
         },
         y: {
           beginAtZero: true,
           max: temperaturaMax,
           grid: {
-            color: 'rgba(0, 0, 0, 0)' // cambia el color de la cuadrícula en el eje X
+            color: 'rgba(0, 0, 0, 0)'
           },
           ticks: {
-            color: 'rgba(0, 0, 0, 0)' // color de las etiquetas del eje X
+            color: 'rgba(0, 0, 0, 0)'
           }
         }
       }
-    } // Cierra la llave de las opciones
-  }); // Cierra el paréntesis de new Chart
+    }
+  });
 }
 
 let realtimeChart = crearRealtimeChart();
 let backgroundChart = crearBackgroundChart(dataset);
 
-
-
 function obtenerDatos() {
-  return fetch('http://localhost:3000/api/datos',
-  
-  )
+  return fetch(`${baseUrl}/api/datos`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Problema con la respuesta');
@@ -172,12 +165,8 @@ function obtenerDatos() {
     })
     .catch(error => {
       console.error(error);
-      // Manejar el error como lo necesites
     });
 }
-
-
-
 
 function agregarPunto(tiempo, dato) {
   realtimeChart.data.labels.push(tiempo);
@@ -185,11 +174,10 @@ function agregarPunto(tiempo, dato) {
   realtimeChart.update();
 }
 
-
 export function iniciarGrafica() {
-  const duracionTotal = tiempo; 
+  const duracionTotal = tiempo;
   const intervalo = setInterval(() => {
-    const tiempoTranscurrido = realtimeChart.data.labels.length * 1; 
+    const tiempoTranscurrido = realtimeChart.data.labels.length * 1;
     obtenerDatos().then(dato => {
       agregarPunto(tiempoTranscurrido, dato);
     });
@@ -201,22 +189,12 @@ export function iniciarGrafica() {
 
 export function actualizarTiempo(nuevoTiempo) {
   tiempo = nuevoTiempo;
-  console.log(tiempo);
-  // const datos = obtenerDatosLimpios();
-  // console.log(datos);
-
   const datosJSON = obtenerDatosJSON();
-  console.log(datosJSON);
-  // Destruye las gráficas actuales
   if (realtimeChart) realtimeChart.destroy();
   if (backgroundChart) backgroundChart.destroy();
-
-  // Llama a las funciones para recrear las gráficas con los nuevos datos o configuración
   realtimeChart = crearRealtimeChart();
   backgroundChart = crearBackgroundChart(dataset);
-  
 }
-
 
 function obtenerDatosRealtimeChart() {
   return realtimeChart.data.datasets[0].data;
@@ -224,33 +202,25 @@ function obtenerDatosRealtimeChart() {
 
 function obtenerDatosLimpios() {
   const datosSucios = obtenerDatosRealtimeChart();
-  const datosLimpios = datosSucios.slice(0, datosSucios.length); // O puedes usar [...datosSucios]
+  const datosLimpios = datosSucios.slice(0, datosSucios.length);
   return datosLimpios;
 }
 
 function obtenerDatosJSON() {
-  const datosLimpios = obtenerDatosLimpios(); // Usamos la función definida anteriormente
+  const datosLimpios = obtenerDatosLimpios();
   const json = {
     datos: datosLimpios
   };
   return json;
 }
 
-
-
-
-
-
-
 function enviarPerfil() {
-  // Obtener los valores de los elementos
   var nombre = document.getElementById("Nombreperfil").innerText;
   var temperatura = parseFloat(document.getElementById("tiempoFinal").innerText);
   var tiempo = parseFloat(document.getElementById("tempFinal").innerText);
   var RPM = parseInt(document.getElementById("rpmint").innerText);
-  var datos = obtenerDatosJSON().datos; // Asegúrate de que esto devuelva un array
+  var datos = obtenerDatosJSON().datos;
 
-  // Crear la estructura JSON
   var postData = {
     "nombre": nombre,
     "temperatura": temperatura,
@@ -259,30 +229,22 @@ function enviarPerfil() {
     "RPM": RPM
   };
 
-  // Configurar la solicitud POST
-  fetch('http://localhost:3000/api/perfiles', {
+  fetch(`${baseUrl}/api/perfiles`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-    
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(postData)
   })
   .then(response => response.json())
   .then(data => {
-    // Puedes manejar la respuesta aquí
     console.log('Perfil enviado exitosamente:', data);
   })
   .catch(error => {
-    // Manejo de errores
     console.error('Ocurrió un error al enviar el perfil:', error);
   });
 }
 
-
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("Guardar").addEventListener("click", enviarPerfil);
 });
-
-
-// El linear hace que las escalas se reduxcan a los numeros necesarios

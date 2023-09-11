@@ -96,7 +96,7 @@ exports.insertarPerfil = (req, res) => {
   
     new Promise((resolve, reject) => {
       pool.query(
-        'INSERT INTO Perfiles (nombre, temperatura, tiempo, datos, rpm) VALUES (?, ?, ?, ?, ?)',
+        'INSERT INTO perfiles (nombre, temperatura, tiempo, datos, rpm) VALUES (?, ?, ?, ?, ?)',
         [nombre, temperatura, tiempo, JSON.stringify(datos), RPM],
         (error, results) => {
           if (error) {

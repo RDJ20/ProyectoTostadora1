@@ -3,68 +3,70 @@ import { tiempo, actualizarTiempo } from './grafica.js';
 
 let intervalo = null; // Variable para almacenar el intervalo de tiempo
 
+// Detecta si estás en la Raspberry Pi o en un entorno local
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+// Define la URL base según el entorno
+const baseUrl = isLocal ? 'http://localhost:3000' : 'http://raspberrypi.local:3000';
+
 function actualizarTemperatura() {
-
   const token = localStorage.getItem('jwtToken');
-      if (intervalo) {
-        // Si el intervalo de tiempo ya está en ejecución, lo detenemos
-        clearInterval(intervalo);
-        intervalo = null;
 
-        fetch('http://localhost:3000/api/comenzar/reset', {
-          method: 'POST',
-          headers: {
-            'Authorization': 'Bearer ' + token,
-          }
+  if (intervalo) {
+    // Si el intervalo de tiempo ya está en ejecución, lo detenemos
+    clearInterval(intervalo);
+    intervalo = null;
+
+    fetch(`${baseUrl}/api/comenzar/reset`, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      },
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+        console.log('Comenzar enviado correctamente');
+      })
+      .catch(error => console.error('Error:', error));
+  } else {
+    // Si no, iniciamos un nuevo intervalo de tiempo
+
+    fetch(`${baseUrl}/api/comenzar`, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      },
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+        console.log('Comenzar enviado correctamente');
+      })
+      .catch(error => console.error('Error:', error));
+
+    intervalo = setInterval(() => {
+      fetch(`${baseUrl}/api/datosI`, {
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Imprimimos los datos que estamos recibiendo para ver su estructura
+          console.log(data);
+
+          // Luego, intentamos acceder a la propiedad
+          document.getElementById('tiempo').textContent = data.temperatura_cafe;
         })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`Error: ${response.statusText}`);
-            }
-            console.log('Comenzar enviado correctamente');
-          })
-          .catch(error => console.error('Error:', error));
-
-      } else {
-        // Si no, iniciamos un nuevo intervalo de tiempo
-
-        fetch('http://localhost:3000/api/comenzar', {
-          method: 'POST',
-          headers: {
-            'Authorization': 'Bearer ' + token,
-          }
-        })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`Error: ${response.statusText}`);
-            }
-            console.log('Comenzar enviado correctamente');
-          })
-          .catch(error => console.error('Error:', error));
-
-
-        intervalo = setInterval(() => {
-          fetch('http://localhost:3000/api/datosI',
-          {
-            headers: {
-              'Authorization': 'Bearer ' + token,
-            }
-          }
-          )
-            .then(response => response.json())
-            .then(data => {
-              // Imprimimos los datos que estamos recibiendo para ver su estructura
-              console.log(data);
-              
-              // Luego, intentamos acceder a la propiedad
-              document.getElementById('tiempo').textContent = data.temperatura_cafe;
-            })
-            .catch(error => console.error('Error:', error));
-        }, 1000);
-      }
+        .catch(error => console.error('Error:', error));
+    }, 1000);
+  }
 }
 
-let yaPresionado = false; 
+let yaPresionado = false;
 
 function enviarRPM() {
   const rpmElement = document.getElementById('rpmint');
@@ -84,7 +86,7 @@ function enviarRPM() {
   // Añade la propiedad 'comenzar'
   const data = { comenzar: !yaPresionado, velocidad: velocidad };
   const token = localStorage.getItem('jwtToken');
-  fetch('http://localhost:3000/api/motor', {
+  fetch(`${baseUrl}/api/motor`, {
     method: 'POST',
     headers: { 
       'Authorization': 'Bearer ' + token,
@@ -102,7 +104,6 @@ function enviarRPM() {
   yaPresionado = !yaPresionado; // Cambia el estado de la variable
 }
 
-
 document.getElementById('botonTiempo').addEventListener('click', () => {
   const nuevoTiempo = parseFloat(document.getElementById('tempFinal').textContent);
   if (!isNaN(nuevoTiempo)) {
@@ -113,59 +114,45 @@ document.getElementById('botonTiempo').addEventListener('click', () => {
   }
 });
 
-
-
 document.addEventListener('DOMContentLoaded', (event) => {
-var token = localStorage.getItem('jwtToken');
+  var token = localStorage.getItem('jwtToken');
 
+  fetch(`${baseUrl}/api/admin`, {
+    method: 'GET', 
+    headers: {
+      'Authorization': 'Bearer ' + token,
+    }
+  })
+  .then(response => {
+    if(response.status === 403) {
+      window.location.href = '../index.html';
+    }
+    return response.json();
+  })
+  .then(data => {
+    document.getElementById('mensaje').textContent = '¡Hola Admin!';
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
 
-fetch('http://localhost:3000/api/admin', {
-  method: 'GET', 
-  headers: {
-    'Authorization': 'Bearer ' + token,
-  }
-})
-.then(response => {
-  if(response.status === 403) {
-    window.location.href = '../index.html';
-  }
-  return response.json();
-})
-.then(data => {
-  document.getElementById('mensaje').textContent = '¡Hola Admin!';
-})
-.catch((error) => {
-  console.error('Error:', error);
-});
-
-
-
-
-
-function cerrarSesion() {
-   
+  function cerrarSesion() {
     localStorage.removeItem('jwtToken');
     window.location.href = '../index.html';
   }
 
   function comenzarGrafica() {
-   
     preparar();
     iniciarGrafica();
   }
 
- 
   document.getElementById('BotonCerrarSesion').addEventListener('click', cerrarSesion);
   document.getElementById('botonComenzar').addEventListener('click', comenzarGrafica);
-
   document.getElementById('botonTemperatura').addEventListener('click', actualizarTemperatura);
   document.getElementById('botonComenzarRPM').addEventListener('click', enviarRPM); 
 
-  
-
-
   function preparar (){
-    fetch('http://localhost:3000/api/datos/reset', {
+    fetch(`${baseUrl}/api/datos/reset`, {
       method: 'POST'
     })
       .then(response => {
@@ -176,8 +163,7 @@ function cerrarSesion() {
       })
       .catch(error => console.error('Error:', error)); 
 
-
-    fetch('http://localhost:3000/api/comenzar', {
+    fetch(`${baseUrl}/api/comenzar`, {
       method: 'POST'
     })
       .then(response => {
@@ -187,7 +173,5 @@ function cerrarSesion() {
         console.log('Comenzar enviado correctamente');
       })
       .catch(error => console.error('Error:', error));
-
   }
-
 });
