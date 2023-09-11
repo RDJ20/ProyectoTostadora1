@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin</title>
+  <link rel="stylesheet" type="text/css" href="admin.css">
+  <script type="module" src="admin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="./admin.html">
+        <h1 id="Titulo" >TostaCafe</h1>
+        </a>
+      </div>
+      <nav>
+        <a href="../Perfiles/index.html">Perfiles</a>
+        <a href="#">Crear Usuario</a>
+        <a href="#" id="BotonCerrarSesion" class="logout">Cerrar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+    
+   
+  <div id="chartContainer">
+    <div>
+      <div class="sidebar-container3">
+         <h1 id="nombreP">Sin Perfil</h1>
+      </div>
+    </div>
+    
+
+
+
+    <canvas id="realtimeChart" width="400" height="200"></canvas>
+
+    <div class="sidebar-container">
+
+      <div class="sidebar-container4">
+        <h1 id="tempe2">Temperatura Actual</h1>
+        <h1 id="tempe1">100</h1>
+        <h1 id="tempe">°C</h1>
+      </div>
+
+
+      <div id="slider" class="range">
+        <div class="sliderValue">
+          <span>100</span>
+        </div>
+        <div class="field">
+          <div class="value left">0</div>
+          <input type="range" min="10" max="200" value="100" steps="1">
+          <div class="value right">200</div>
+        </div>
+    </div>
+
+    <div id="slider1" class="range">
+      <div class="sliderValue">
+        <span>100</span>
+      </div>
+      <div class="field">
+        <div class="value left">0</div>
+        <input type="range" min="10" max="200" value="100" steps="1">
+        <div class="value right">200</div>
+      </div>
+  </div>
+
+  <div id="slider2" class="range">
+    <div class="sliderValue">
+      <span>100</span>
+    </div>
+    <div class="field">
+      <div class="value left">0</div>
+      <input type="range" min="10" max="200" value="100" steps="1">
+      <div class="value right">200</div>
+    </div>
+</div>
+
+<div id="slider3" class="range">
+  <div class="sliderValue">
+    <span>100</span>
+  </div>
+  <div class="field">
+    <div class="value left">0</div>
+    <input type="range" min="10" max="200" value="100" steps="1">
+    <div class="value right">200</div>
+  </div>
+</div>
+
+
+
+
+
+
+
+    <script>
+      const slideValue = document.querySelector("span");
+      const inputSlider = document.querySelector("input");
+      inputSlider.oninput = (()=>{
+        let value = inputSlider.value;
+        slideValue.textContent = value;
+        slideValue.style.left = (value/2) + "%";
+        slideValue.classList.add("show");
+      });
+      inputSlider.onblur = (()=>{
+        slideValue.classList.remove("show");
+      });
+    </script>
+    
+      
+
+
+
+      <span class="input" id="rpmint" role="textbox" contenteditable>4569</span>
+      <span class="input" id="tempFinal" role="textbox" contenteditable>150</span>
+      <p class="input" id="temperatura">90</p> 
+      <!-- recordar que el de tiempo y temperatura estan invertidos -->
+      <button id="botonTemperatura">Temperatura</button>
+      <span class="input" id="tiempoFinal" role="textbox" contenteditable>280</span>
+      <p class="input" id="tiempo">80</p>
+      <button id="botonTiempo">Tiempo</button>
+      
+      <button id="botonComenzar">Comenzar</button>
+      <button id="botonComenzarRPM">Comenzar RPM</button>
+      <button id="botonParar">Parar</button>
+      <p class="input" id="Nombreperfil" contenteditable >Nombre de perfil</p>
+      <button class="input" id="Guardar" role="textbox" >Guardar</button>
+    </div>
+
+    <canvas id="backgroundChart"  width="400" height="200"> </canvas>
+
+  </div>
+
+
+  <div class="sidebar-container2">
+    <button class="input" id="Guardar" role="textbox" >Guardar</button>
+  </div>
+  
+</body>
+</html>

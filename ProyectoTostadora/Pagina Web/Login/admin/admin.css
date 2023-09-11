@@ -1,0 +1,480 @@
+#chartContainer {
+    position: relative;
+    top: -10%;
+    width: 70%;
+    right: 11%;
+    height: 400px;
+    background-color: #ffffff;
+    margin: 70px auto;
+    
+    
+    
+}
+#realtimeChart {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 10;
+}
+#backgroundChart {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('../imagenes/Imagen\ baarra.png');
+    background-size: cover;
+    padding: 5px;
+    border-bottom: 1px solid #8e1313;
+  }
+  
+  .navbar .logo {
+    margin-left: 50px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #8B4513; 
+  }
+  
+  nav a {
+    margin-right: 50px;
+    color: #774508;
+    text-decoration: none;
+    padding: 1px;
+    transition: color 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #8B4513;
+  }
+  
+  .logout {
+    color: white;
+    background-color: #8B4513; 
+    border: none;
+    border-radius: 0; 
+    padding: 10px 20px;
+  }
+  
+  .logout:hover {
+    background-color: #5a3510;
+  }
+
+
+  #botonComenzar {
+    position: absolute;
+    right: -10%; 
+    top: 50%;
+    transform: translateY(-50%); 
+    padding: 10px;
+    background-color: #8B4513; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#botonComenzar:hover {
+    background-color: #5a3510;
+}
+
+#botonParar { 
+  position: absolute;
+  right: -6.5%; 
+  top: 60%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  background-color: #8B4513; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#botonParar:hover {
+  background-color: #5a3510;
+}
+
+#botonComenzarRPM { 
+  position: absolute;
+  right: -22.5%; 
+  top: 40%;
+  transform: translateY(-50%); 
+  padding: 10px;
+  background-color: #8B4513; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#botonComenzarRPM:hover {
+  background-color: #5a3510;
+}
+
+
+.input {
+  position: absolute;
+  right: -7.5%; 
+  top: 40%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 40px ; 
+  border: 1px solid #000;
+}
+
+
+
+#temperatura {
+  position: absolute;
+  right: -16%; 
+  top: 25%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 40px ; 
+  border: 1px solid #000;
+}
+
+#tempFinal {
+  position: absolute;
+  right:  -7.5%; 
+  top: 29%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 40px ; 
+  border: 1px solid #000;
+}
+
+
+#tiempo {
+  position: absolute;
+  right: -16%; 
+  top: 14%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 40px ; 
+  border: 1px solid #000;
+}
+
+#tiempoFinal {
+  position: absolute;
+  right:  -7.5%; 
+  top: 18%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 40px ; 
+  border: 1px solid #000;
+}
+
+
+
+#Nombreperfil {
+  position: absolute;
+  right: -19%; 
+  top: 70%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 130px ; 
+  border: 1px solid #000;
+}
+
+#Guardar {
+  position: absolute;
+  right:  55%; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  color: white;
+  padding: 10px;
+  width: 100px ; 
+  text-align: center;
+  border-radius: 40px;
+  background-color: #8B4513; 
+  border: none;
+}
+
+#Guardar:hover {
+  background-color: #5a3510;
+}
+
+#botonTiempo {
+  position: absolute;
+  right: -25%; 
+  top: 30%;
+  transform: translateY(-50%); 
+  padding: 10px;
+  background-color: #8B4513; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#botonTiempo:hover {
+  background-color: #5a3510;
+}
+
+#botonTemperatura {
+  position: absolute;
+  right: -29%; 
+  top: 19%;
+  transform: translateY(-50%); 
+  padding: 10px;
+  background-color: #8B4513; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#botonTemperatura:hover {
+  background-color: #5a3510;
+}
+
+#nombreP {
+  text-align: center;  
+   /* Define el ancho y el estilo de la frontera */
+  top: 0%;
+  left: 16%;
+  top: -15%;
+  position: absolute ; 
+  color: #ffffff;
+}
+
+@font-face {
+  font-family: 'CartographCF-Bold';
+  src: url('CartographCF-Bold.otf') format('opentype');
+}
+
+.sidebar-container {
+  position: absolute;
+  right: -299px;
+  height: 90%;
+  top: -16%;  /* Puedes ajustar esto según dónde quieras que comience tu caja */
+  width: 30%;  /* Ajusta el ancho según lo que necesites */
+  background: linear-gradient(to bottom, #FC7A4A, #B03B3B);  /* Un color de fondo claro con un poco de transparencia */
+  padding: 20px;  /* Espacio interior para que los elementos no toquen los bordes directamente */
+  border-radius: 40px;  /* Bordes redondeados */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Una ligera sombra para darle profundidad */
+}
+.sidebar-container2 {
+  position: absolute;
+  right: 5px;
+  height: 5%;
+  top: 85%;  /* Puedes ajustar esto según dónde quieras que comience tu caja */
+  width: 20.5%;  /* Ajusta el ancho según lo que necesites */
+  background: linear-gradient(to bottom, #FC7A4A, #B03B3B);  /* Un color de fondo claro con un poco de transparencia */
+  padding: 20px;  /* Espacio interior para que los elementos no toquen los bordes directamente */
+  border-radius: 40px;  /* Bordes redondeados */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Una ligera sombra para darle profundidad */
+}
+
+.sidebar-container3 {
+  position: absolute;
+  right: 35%;
+  height: 5%;
+  top: -16%;  /* Puedes ajustar esto según dónde quieras que comience tu caja */
+  width: 20.5%;  /* Ajusta el ancho según lo que necesites */
+  background: linear-gradient(to bottom, #FC7A4A, #B03B3B);  /* Un color de fondo claro con un poco de transparencia */
+  padding: 20px;  /* Espacio interior para que los elementos no toquen los bordes directamente */
+  border-radius: 40px;  /* Bordes redondeados */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Una ligera sombra para darle profundidad */
+}
+
+.sidebar-container4 {
+  position: absolute;
+  right: 11%;
+  height: 10%;
+  top: 5%;  /* Puedes ajustar esto según dónde quieras que comience tu caja */
+  width: 60.5%;  /* Ajusta el ancho según lo que necesites */
+  background: #ffffff;  /* Un color de fondo claro con un poco de transparencia */
+  padding: 20px;  /* Espacio interior para que los elementos no toquen los bordes directamente */
+  border-radius: 20px;  /* Bordes redondeados */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Una ligera sombra para darle profundidad */
+}
+
+#tempe {
+  text-align: center;  
+  font-family: 'CartographCF-Bold', sans-serif;
+  top: 0%;
+  left: 60%;
+  top: -10%;
+  font-size: 250%;
+  position: absolute ; 
+  color: #000000;
+}
+
+#tempe1 {
+  text-align: center;  
+  font-family: 'CartographCF-Bold', sans-serif;
+  top: 0%;
+  left: 25%;
+  top: -10%;
+  font-size: 250%;
+  position: absolute ; 
+  color: #000000;
+}
+
+#tempe2 {
+  text-align: center;  
+  font-family: 'CartographCF-Bold', sans-serif;
+  top: 0%;
+  left: 15%;
+  top: -10%;
+  font-size: 80%;
+  position: absolute ; 
+  color: #000000;
+}
+
+#Titulo {
+  text-align: center; 
+  font-family: 'CartographCF-Bold', sans-serif; 
+  color: #000000;
+  font-size: 150%;
+  height: 10%;
+  
+}
+.logo a {
+  text-decoration: none;
+}
+
+
+
+.range{
+  right: 19%;
+  position: absolute;
+  top: 30%;
+  height: 10%;
+  width: 65%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0 25px 0 15px;
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
+}
+.sliderValue{
+  position: relative;
+  width: 100%;
+}
+.sliderValue span{
+  position: absolute;
+  height: 45px;
+  width: 45px;
+  transform: translateX(-70%) scale(0);
+  font-weight: 500;
+  top: -40px;
+  line-height: 55px;
+  z-index: 2;
+  color: #fff;
+  transform-origin: bottom;
+  transition: transform 0.3s ease-in-out;
+}
+.sliderValue span.show{
+  transform: translateX(-70%) scale(1);
+}
+.sliderValue span:after{
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: #664AFF;
+  border: 3px solid #fff;
+  z-index: -1;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border-bottom-left-radius: 50%;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+.field{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+}
+.field .value{
+  position: absolute;
+  font-size: 18px;
+  color: #664AFF;
+  font-weight: 600;
+}
+.field .value.left{
+  left:-5px;
+  font-size: 10px;
+  width: 30px;
+}
+.field .value.right{
+  right: -33px;
+  font-size: 10px;
+  width: 30px;
+}
+.range input{
+  -webkit-appearance: none;
+  width: 530%;
+  height: 3px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  z-index: 2222;
+}
+.range input::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+  background: #664AFF;
+  border: 1px solid #664AFF;
+  cursor: pointer;
+}
+.range input::-moz-range-thumb{
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+  background: #664AFF;
+  border: 1px solid #664AFF;
+  cursor: pointer;
+}
+
+#slider1 {
+  margin-top: 50px;  /* Ajusta este valor según lo lejos que quieras mover el div hacia abajo */
+}
+#slider2 {
+  margin-top: 100px;  /* Ajusta este valor según lo lejos que quieras mover el div hacia abajo */
+}
+#slider3 {
+  margin-top: 150px;  /* Ajusta este valor según lo lejos que quieras mover el div hacia abajo */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

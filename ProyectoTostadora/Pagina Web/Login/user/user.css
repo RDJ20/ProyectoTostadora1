@@ -1,0 +1,250 @@
+#chartContainer {
+    position: relative;
+    top: -10%;
+    width: 70%;
+    right: 11%;
+    height: 400px;
+    background-color: #ffffff;
+    margin: 70px auto;
+    
+    
+    
+}
+#realtimeChart {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 10;
+}
+#backgroundChart {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('../imagenes/Imagen\ baarra.png');
+    background-size: cover;
+    padding: 5px;
+    border-bottom: 1px solid #8e1313;
+  }
+  
+  .navbar .logo {
+    margin-left: 50px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #8B4513; 
+  }
+  
+  nav a {
+    margin-right: 50px;
+    color: #774508;
+    text-decoration: none;
+    padding: 1px;
+    transition: color 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #8B4513;
+  }
+  
+  .logout {
+    color: white;
+    background-color: #8B4513; 
+    border: none;
+    border-radius: 0; 
+    padding: 10px 20px;
+  }
+  
+  .logout:hover {
+    background-color: #5a3510;
+  }
+
+
+  #botonComenzar {
+    position: absolute;
+    right: -10%; 
+    top: 50%;
+    transform: translateY(-50%); 
+    padding: 10px;
+    background-color: #8B4513; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#botonComenzar:hover {
+    background-color: #5a3510;
+}
+
+#botonParar { 
+  position: absolute;
+  right: -6.5%; 
+  top: 60%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  background-color: #8B4513; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#botonParar:hover {
+  background-color: #5a3510;
+}
+
+#botonComenzarRPM { 
+  position: absolute;
+  right: -22.5%; 
+  top: 40%;
+  transform: translateY(-50%); 
+  padding: 10px;
+  background-color: #8B4513; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#botonComenzarRPM:hover {
+  background-color: #5a3510;
+}
+
+
+.input {
+  position: absolute;
+  right: -7.5%; 
+  top: 40%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 40px ; 
+  border: 1px solid #000;
+}
+
+
+
+#temperatura {
+  position: absolute;
+  right: -16%; 
+  top: 25%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 40px ; 
+  border: 1px solid #000;
+}
+
+#tempFinal {
+  position: absolute;
+  right:  -7.5%; 
+  top: 29%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 40px ; 
+  border: 1px solid #000;
+}
+
+
+#tiempo {
+  position: absolute;
+  right: -16%; 
+  top: 14%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 40px ; 
+  border: 1px solid #000;
+}
+
+#tiempoFinal {
+  position: absolute;
+  right:  -7.5%; 
+  top: 18%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 40px ; 
+  border: 1px solid #000;
+}
+
+
+
+#Nombreperfil {
+  position: absolute;
+  right: -19%; 
+  top: 70%; 
+  transform: translateY(-50%); 
+  padding: 10px;
+  width: 130px ; 
+  border: 1px solid #000;
+}
+
+#Guardar {
+  position: absolute;
+  right:  -19%; 
+  top: 85%; 
+  transform: translateY(-50%); 
+  color: white;
+  padding: 10px;
+  width: 150px ; 
+  text-align: center;
+  background-color: #8B4513; 
+}
+
+#Guardar:hover {
+  background-color: #5a3510;
+}
+
+#botonTiempo {
+  position: absolute;
+  right: -25%; 
+  top: 30%;
+  transform: translateY(-50%); 
+  padding: 10px;
+  background-color: #8B4513; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#botonTiempo:hover {
+  background-color: #5a3510;
+}
+
+#botonTemperatura {
+  position: absolute;
+  right: -29%; 
+  top: 19%;
+  transform: translateY(-50%); 
+  padding: 10px;
+  background-color: #8B4513; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#botonTemperatura:hover {
+  background-color: #5a3510;
+}
+
+#nombreP {
+  text-align: center;  
+   /* Define el ancho y el estilo de la frontera */
+  top: -20%;
+  left: 40%;
+  position: absolute ; 
+}

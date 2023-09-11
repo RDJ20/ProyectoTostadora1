@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin</title>
+  <link rel="stylesheet" type="text/css" href="user.css">
+  <script type="module" src="user.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="./admin.html">
+        <h1>TostaCafe</h1>
+        </a>
+      </div>
+      <nav>
+        <a href="../Perfiles/index.html">Perfiles</a>
+        <a href="#" id="BotonCerrarSesion" class="logout">Cerrar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+    
+   
+  <div id="chartContainer">
+    <div>
+    <h1 id="nombreP">Sin Perfil</h1>
+    </div>
+    <canvas id="realtimeChart" width="400" height="200"></canvas>
+    <span class="input" id="rpmint" role="textbox" contenteditable>4569</span>
+    <span class="input" id="tempFinal" role="textbox" contenteditable>150</span>
+    <p class="input" id="temperatura">90</p> 
+    <!-- recordar que el de tiempo y temperatura estan invertidos -->
+    <button id="botonTemperatura">Temperatura</button>
+    <span class="input" id="tiempoFinal" role="textbox" contenteditable>280</span>
+    <p class="input" id="tiempo">80</p>
+    <button id="botonTiempo">Tiempo</button>
+    <canvas id="backgroundChart"  width="400" height="200"> </canvas>
+    <button id="botonComenzar">Comenzar</button>
+    <button id="botonComenzarRPM">Comenzar RPM</button>
+    <button id="botonParar">Parar</button>
+    
+    
+  </div>
+  
+</body>
+</html>

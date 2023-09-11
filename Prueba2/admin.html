@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cambiar contenido con botón</title>
+</head>
+<body>
+    <h1>Contenido actual del párrafo:</h1>
+    <p id="miParrafo">Este es el contenido inicial del párrafo.</p>
+
+    <button id="botonTemperatura">Cambiar a 100</button>
+
+    <script>
+        document.getElementById('botonTemperatura').addEventListener('click', function() {
+    var parrafo = document.getElementById('miParrafo');
+            parrafo.innerHTML = '100';
+  });
+        
+    </script>
+</body>
+</html>
