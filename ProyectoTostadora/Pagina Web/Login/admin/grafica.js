@@ -1,10 +1,25 @@
 var temperaturaMax = 180;
-export let tiempo = 40;
+export let tiempo = 19;
 let dataset = [];
 var A = 100;
-var mu = 20;
+var mu = 9;
 var sigma = 5;
 var baseUrl = '';
+
+//Aqui va la conexion con el websocket
+const socket = new WebSocket('ws://raspberrypi.local:8765');
+
+socket.addEventListener('open', (event) => {
+    console.log('Connected to the WebSocket server');
+});
+
+socket.addEventListener('message', (event) => {
+    document.getElementById('tempe1').textContent = event.data + "°C";
+});
+
+
+
+
 
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
   baseUrl = 'http://localhost:3000';
@@ -174,27 +189,40 @@ function agregarPunto(tiempo, dato) {
   realtimeChart.update();
 }
 
+
+
 export function iniciarGrafica() {
-  const duracionTotal = tiempo;
-  const intervalo = setInterval(() => {
-    const tiempoTranscurrido = realtimeChart.data.labels.length * 1;
-    obtenerDatos().then(dato => {
-      agregarPunto(tiempoTranscurrido, dato);
-    });
-    if (tiempoTranscurrido >= duracionTotal) {
-      clearInterval(intervalo);
-    }
-  }, 1000);
+  socket.addEventListener('message', (event) => {
+    const dato = parseFloat(event.data); // Asumiendo que el dato es un número
+    agregarPunto(realtimeChart.data.labels.length, dato);
+  });
 }
 
-export function actualizarTiempo(nuevoTiempo) {
+export function actualizarTiempo(nuevoTiempo, nuevaTempt ) {
+  //Aqui tambien se actualiza la temperatura
   tiempo = nuevoTiempo;
+  temperaturaMax = nuevaTempt
   const datosJSON = obtenerDatosJSON();
   if (realtimeChart) realtimeChart.destroy();
   if (backgroundChart) backgroundChart.destroy();
   realtimeChart = crearRealtimeChart();
   backgroundChart = crearBackgroundChart(dataset);
 }
+
+//Nueva funcion
+export function tomarDatos()
+{
+   var slider = document.querySelector("#slider1 input[type='range']");
+   return parseInt(slider.value, 10);
+}
+export function tomarDatos2()
+{
+   var slider = document.querySelector("#slider input[type='range']");
+   return parseInt(slider.value, 10);
+}
+
+
+
 
 function obtenerDatosRealtimeChart() {
   return realtimeChart.data.datasets[0].data;
@@ -245,6 +273,18 @@ function enviarPerfil() {
   });
 }
 
+
+
+function comenzarGrafica() {   
+  iniciarGrafica();
+}
+function setear(){
+actualizarTiempo(tomarDatos(), tomarDatos2());
+}
+
+
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("Guardar").addEventListener("click", enviarPerfil);
+  document.getElementById("iniciar").addEventListener('click', comenzarGrafica);
+  document.getElementById("setear").addEventListener('click', setear);
 });

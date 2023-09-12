@@ -141,13 +141,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     window.location.href = '../index.html';
   }
 
-  function comenzarGrafica() {
-    preparar();
-    iniciarGrafica();
-  }
+ 
 
   document.getElementById('BotonCerrarSesion').addEventListener('click', cerrarSesion);
-  document.getElementById('botonComenzar').addEventListener('click', comenzarGrafica);
   document.getElementById('botonTemperatura').addEventListener('click', actualizarTemperatura);
   document.getElementById('botonComenzarRPM').addEventListener('click', enviarRPM); 
 

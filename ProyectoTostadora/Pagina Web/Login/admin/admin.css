@@ -371,10 +371,10 @@ body {
   position: absolute;
   height: 45px;
   width: 45px;
-  left: 50%;
+  left: 70%;
   transform: translateX(-10%) scale(0);
   font-weight: 500;
-  top: -40px;
+  top: -50px;
   line-height: 55px;
   z-index: 2;
   color: #fff;
@@ -392,7 +392,8 @@ body {
   background: #664AFF;
   border: 3px solid #fff;
   z-index: -1;
-  left: 50%;
+  left: 30%;
+  text-align: center;
   transform: translateX(-50%) rotate(45deg);
   border-bottom-left-radius: 50%;
   box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
@@ -511,14 +512,14 @@ input[name="nombre"]:focus {
 #setear {
   position: absolute;
   right:  -65%; 
-  left: 50%; 
+  left: 40%; 
   top: 20px;
   font-size: 100%;
   font-family: 'CartographCF-Bold', sans-serif;
   transform: translateY(-50%); 
   color: rgb(28, 197, 180);
   padding: 10px;
-  width: 100px ; 
+  width: 80px ; 
   text-align: center;
   border-radius: 40px;
   background-color: #fafafa; 
@@ -532,7 +533,7 @@ input[name="nombre"]:focus {
 
 #parar {
   position: absolute;
-  right:  -225px; 
+  right:  -239px; 
   
   top: 20px;
   font-size: 100%;
@@ -540,7 +541,7 @@ input[name="nombre"]:focus {
   transform: translateY(-50%); 
   color: rgb(28, 197, 180);
   padding: 10px;
-  width: 100px ; 
+  width: 70px ; 
   text-align: center;
   border-radius: 40px;
   background-color: #fafafa; 
@@ -548,5 +549,25 @@ input[name="nombre"]:focus {
 }
 
 #parar:hover {
+  background-color: #ffffff;
+}
+
+#iniciar {
+  position: absolute;
+  right:  -165px; 
+  top: 20px;
+  font-size: 100%;
+  font-family: 'CartographCF-Bold', sans-serif;
+  transform: translateY(-50%); 
+  color: rgb(28, 197, 180);
+  padding: 10px;
+  width: 80px ; 
+  text-align: center;
+  border-radius: 40px;
+  background-color: #fafafa; 
+  border: none;
+}
+
+#iniciar:hover {
   background-color: #ffffff;
 }

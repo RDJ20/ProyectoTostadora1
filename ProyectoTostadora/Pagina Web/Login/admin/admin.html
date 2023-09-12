@@ -51,8 +51,8 @@
         </div>
         <div class="field">
           <div class="value left">0</div>
-          <input type="range" min="10" max="200" value="100" steps="1">
-          <div class="value right">200</div>
+          <input  type="range" min="180" max="240" value="210" steps="1">
+          <div class="value right">240</div>
           <div class="etiqueta">Temp.</div>
         </div>
     </div>
@@ -63,9 +63,9 @@
         <span>100</span>
       </div>
       <div class="field">
-        <div class="value left">0</div>
-        <input type="range" min="10" max="200" value="100" steps="1">
-        <div class="value right">200</div>
+        <div class="value left">7</div>
+        <input type="range" min="7" max="30" value="19" steps="1">
+        <div class="value right">30</div>
         <div class="etiqueta">Time.</div>
       </div>
   </div>
@@ -77,8 +77,8 @@
     </div>
     <div class="field">
       <div class="value left">0</div>
-      <input type="range" min="10" max="200" value="100" steps="1">
-      <div class="value right">200</div>
+      <input type="range" min="0" max="100" value="50" steps="1">
+      <div class="value right">100</div>
       <div class="etiqueta">GAS.</div>
     </div>
 </div>
@@ -91,8 +91,8 @@
   </div>
   <div class="field">
     <div class="value left">0</div>
-    <input type="range" min="10" max="200" value="100" steps="1">
-    <div class="value right">200</div>
+    <input type="range" min="0" max="100" value="50" steps="1">
+    <div class="value right">100</div>
     <div class="etiqueta">RPM.</div>
   </div>
   
@@ -102,6 +102,7 @@
 <div id="textoarea">
 <button class="input" id="setear" role="textbox" >Setear</button>
 <button class="input" id="parar" role="textbox" >Parar</button>
+<button class="input" id="iniciar" role="textbox" >Iniciar</button>
 </div>
 
 
@@ -119,7 +120,7 @@
 
       inputSlider.oninput = () => {
           let value = inputSlider.value;
-          slideValue.textContent = "_" +value+"_";
+          slideValue.textContent = value;
           slideValue.style.left = (value/2) + "%";
           slideValue.classList.add("show");
       };
@@ -132,17 +133,7 @@
     
 
     <!-- // Para el websocket del numero de temperatura -->
-    <script>
-      const socket = new WebSocket('ws://raspberrypi.local:8765');
-
-      socket.addEventListener('open', (event) => {
-          console.log('Connected to the WebSocket server');
-      });
-
-      socket.addEventListener('message', (event) => {
-          document.getElementById('tempe1').textContent = event.data + "°C";
-      });
-     </script>
+    
 
 
 
