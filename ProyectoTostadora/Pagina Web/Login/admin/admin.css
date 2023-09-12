@@ -312,10 +312,10 @@ body {
 }
 
 #tempe1 {
-  text-align: center;  
+  text-align: left;  
   font-family: 'CartographCF-Bold', sans-serif;
   top: 0%;
-  left: 25%;
+  left: 13%;
   top: -10%;
   font-size: 250%;
   position: absolute ; 
