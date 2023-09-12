@@ -20,7 +20,7 @@ app.listen(3000, '0.0.0.0', () => {
   console.log('Servidor iniciado en el puerto 3000');
 
   // Ejecutar el script de Python
-  exec('python3 tu_archivo.py', (error, stdout, stderr) => {
+  exec('python3 server.py', (error, stdout, stderr) => {
     if (error) {
       console.error(`Error al ejecutar el archivo Python: ${error}`);
       return;
