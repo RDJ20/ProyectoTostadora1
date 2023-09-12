@@ -53,8 +53,10 @@
           <div class="value left">0</div>
           <input type="range" min="10" max="200" value="100" steps="1">
           <div class="value right">200</div>
+          <div class="etiqueta">Temp.</div>
         </div>
     </div>
+
 
     <div id="slider1" class="range">
       <div class="sliderValue">
@@ -64,8 +66,10 @@
         <div class="value left">0</div>
         <input type="range" min="10" max="200" value="100" steps="1">
         <div class="value right">200</div>
+        <div class="etiqueta">Time.</div>
       </div>
   </div>
+
 
   <div id="slider2" class="range">
     <div class="sliderValue">
@@ -75,8 +79,11 @@
       <div class="value left">0</div>
       <input type="range" min="10" max="200" value="100" steps="1">
       <div class="value right">200</div>
+      <div class="etiqueta">GAS.</div>
     </div>
 </div>
+
+
 
 <div id="slider3" class="range">
   <div class="sliderValue">
@@ -86,26 +93,40 @@
     <div class="value left">0</div>
     <input type="range" min="10" max="200" value="100" steps="1">
     <div class="value right">200</div>
+    <div class="etiqueta">RPM.</div>
   </div>
+  
+</div>
+
+
+<div id="textoarea">
+<button class="input" id="setear" role="textbox" >Setear</button>
+<button class="input" id="parar" role="textbox" >Parar</button>
 </div>
 
 
 
 
-
-
-
     <script>
-      const slideValue = document.querySelector("span");
-      const inputSlider = document.querySelector("input");
-      inputSlider.oninput = (()=>{
-        let value = inputSlider.value;
-        slideValue.textContent = value;
-        slideValue.style.left = (value/2) + "%";
-        slideValue.classList.add("show");
-      });
-      inputSlider.onblur = (()=>{
-        slideValue.classList.remove("show");
+      //Aqui se le pone el JS para los sliders
+
+      const slideValues = document.querySelectorAll(".range .sliderValue span");
+      const inputSliders = document.querySelectorAll(".range input");
+
+      // Itera sobre todos los sliders
+      inputSliders.forEach((inputSlider, index) => {
+      const slideValue = slideValues[index];
+
+      inputSlider.oninput = () => {
+          let value = inputSlider.value;
+          slideValue.textContent = "_" +value+"_";
+          slideValue.style.left = (value/2) + "%";
+          slideValue.classList.add("show");
+      };
+
+      inputSlider.onblur = () => {
+          slideValue.classList.remove("show");
+      };
       });
     </script>
     
@@ -113,21 +134,11 @@
 
 
 
-      <span class="input" id="rpmint" role="textbox" contenteditable>4569</span>
-      <span class="input" id="tempFinal" role="textbox" contenteditable>150</span>
-      <p class="input" id="temperatura">90</p> 
-      <!-- recordar que el de tiempo y temperatura estan invertidos -->
-      <button id="botonTemperatura">Temperatura</button>
-      <span class="input" id="tiempoFinal" role="textbox" contenteditable>280</span>
-      <p class="input" id="tiempo">80</p>
-      <button id="botonTiempo">Tiempo</button>
-      
-      <button id="botonComenzar">Comenzar</button>
-      <button id="botonComenzarRPM">Comenzar RPM</button>
-      <button id="botonParar">Parar</button>
-      <p class="input" id="Nombreperfil" contenteditable >Nombre de perfil</p>
-      <button class="input" id="Guardar" role="textbox" >Guardar</button>
-    </div>
+    </div> 
+
+
+
+  
 
     <canvas id="backgroundChart"  width="400" height="200"> </canvas>
 
@@ -136,6 +147,7 @@
 
   <div class="sidebar-container2">
     <button class="input" id="Guardar" role="textbox" >Guardar</button>
+    <input  type="text" name="nombre" placeholder="Ingresa Nombre.">
   </div>
   
 </body>
