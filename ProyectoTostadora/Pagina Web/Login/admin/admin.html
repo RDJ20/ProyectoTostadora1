@@ -40,8 +40,8 @@
 
       <div class="sidebar-container4">
         <h1 id="tempe2">Temperatura Actual</h1>
-        <h1 id="tempe1">100</h1>
-        <h1 id="tempe">°C</h1>
+        <h1 id="tempe1">100°C</h1>
+        
       </div>
 
 
@@ -140,7 +140,7 @@
       });
 
       socket.addEventListener('message', (event) => {
-          document.getElementById('tempe1').textContent = event.data ;
+          document.getElementById('tempe1').textContent = event.data + "°C";
       });
      </script>
 
