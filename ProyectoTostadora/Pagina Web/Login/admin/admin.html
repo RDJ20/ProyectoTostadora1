@@ -130,7 +130,19 @@
       });
     </script>
     
-      
+
+    <!-- // Para el websocket del numero de temperatura -->
+    <script>
+      const socket = new WebSocket('ws://raspberrypi.local:8765');
+
+      socket.addEventListener('open', (event) => {
+          console.log('Connected to the WebSocket server');
+      });
+
+      socket.addEventListener('message', (event) => {
+          document.getElementById('tempe1').textContent = event.data ;
+      });
+     </script>
 
 
 
