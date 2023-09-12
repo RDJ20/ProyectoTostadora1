@@ -190,13 +190,25 @@ function agregarPunto(tiempo, dato) {
 }
 
 
+export function iniciarGrafica(tiempo) {
+  let repeticion = 0;
+  const messageHandler = (event) => {
+      const dato =  parseFloat(event.data);
+      if (repeticion >= tiempo+1) {
+        socket.removeEventListener('message', messageHandler);
+        console.log("Evento 'message' detenido después de alcanzar el límite de etiquetas."); // Mensaje en consola
+        return;
+      }
 
-export function iniciarGrafica() {
-  socket.addEventListener('message', (event) => {
-    const dato = parseFloat(event.data); // Asumiendo que el dato es un número
-    agregarPunto(realtimeChart.data.labels.length, dato);
-  });
+      agregarPunto(realtimeChart.data.labels.length, dato);
+      repeticion++;
+  };
+
+  socket.addEventListener('message', messageHandler);
 }
+
+
+
 
 export function actualizarTiempo(nuevoTiempo, nuevaTempt ) {
   //Aqui tambien se actualiza la temperatura
@@ -276,7 +288,7 @@ function enviarPerfil() {
 
 
 function comenzarGrafica() {   
-  iniciarGrafica();
+  iniciarGrafica(tiempo);
 }
 function setear(){
 actualizarTiempo(tomarDatos(), tomarDatos2());
