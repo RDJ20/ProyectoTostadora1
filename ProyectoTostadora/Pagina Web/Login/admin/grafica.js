@@ -18,6 +18,11 @@ socket.addEventListener('message', (event) => {
 });
 
 
+
+
+
+
+
 var token = localStorage.getItem('jwtToken');
 
   fetch(`${baseUrl}/api/admin`, {
@@ -44,27 +49,17 @@ var token = localStorage.getItem('jwtToken');
 
 
 
+  const socket2 = new WebSocket('ws:raspberrypi.local:5678');
 
-
-
-
-
-
-
-
-
-
-const socket2 = new WebSocket('ws:raspberrypi.local:5678');
-
-document.getElementById('rangeInput').addEventListener('change', (event) => {
-    const value = event.target.value;
-    socket2.send(value);
-});
-
-socket2.addEventListener('open', (event) => {
-  console.log('Connected to the WebSocket2 server');
-});
-
+  document.getElementById('rangeInput').addEventListener('change', (event) => {
+      const value = event.target.value;
+      console.log(`Enviando valor al servidor: ${value}`);  // Imprimir el valor que se está enviando
+      socket2.send(value);
+  });
+  
+  socket2.addEventListener('open', (event) => {
+    console.log('Connected to the WebSocket2 server');
+  });
 
 
 
