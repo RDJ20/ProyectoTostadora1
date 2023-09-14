@@ -117,26 +117,26 @@
 
 
 
-<script>
-  const slideValues = document.querySelectorAll(".range:not(#slider2) .sliderValue span");
-  const inputSliders = document.querySelectorAll(".range:not(#slider2) input");
+    <script>
+      const allSliders = document.querySelectorAll(".range input");
+      const slidersToUse = Array.from(allSliders).filter(slider => slider.id !== 'rangeInput');
 
-  // Itera sobre todos los sliders excepto el primero
-  inputSliders.forEach((inputSlider, index) => {
-      const slideValue = slideValues[index];
+      slidersToUse.forEach((inputSlider) => {
+      const slideValue = inputSlider.parentElement.querySelector(".sliderValue span");
 
-      inputSlider.oninput = () => {
-          let value = inputSlider.value;
-          slideValue.textContent = value;
-          slideValue.style.left = (value/2) + "%";
-          slideValue.classList.add("show");
-      };
+        inputSlider.oninput = () => {
+        let value = inputSlider.value;
+        slideValue.textContent = value;
+        slideValue.style.left = (value / 2) + "%";
+        slideValue.classList.add("show");
+    };
 
-      inputSlider.onblur = () => {
-          slideValue.classList.remove("show");
-      };
-  });
-</script>
+    inputSlider.onblur = () => {
+        slideValue.classList.remove("show");
+    };
+    });
+    </script>
+    
 
     <!-- // Para el websocket del numero de temperatura -->
     
