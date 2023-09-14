@@ -121,9 +121,9 @@ document.getElementById('botonUsar').addEventListener('click', function() {
       localStorage.setItem('rpm', rpm.toString());
 
       if (userRole === 1) {
-        window.location.href = '../admin/admin.html';
+        window.location.href = 'http://raspberrypi.local:3000/admin/admin.html';
       } else if (userRole === 2) {
-        window.location.href = '../user/user.html';
+        window.location.href = 'http://raspberrypi.local:3000/user/user.html';
       } else {
         throw new Error('Rol de usuario desconocido');
       }
