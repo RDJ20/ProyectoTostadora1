@@ -81,6 +81,8 @@ for (var i = 0; i <= tiempo; i++) {
   var ft = A * Math.exp(-Math.pow(i - mu, 2) / (2 * Math.pow(sigma, 2)));
   dataset.push(ft);
 }
+
+
 function limpiarLocalStorage() {
   localStorage.removeItem('nombre');
   localStorage.removeItem('datos');

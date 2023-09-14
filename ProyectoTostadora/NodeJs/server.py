@@ -38,7 +38,7 @@ async def handle(websocket, path):
         if data:
             angle = int(data)
             print(f"Recibido: {angle}")
-            set_angle(angle)
+            set_angle(angle+30)
 
 # Iniciar ambos servidores WebSocket
 temperature_server = websockets.serve(send_temperature_data, "0.0.0.0", 8765)
