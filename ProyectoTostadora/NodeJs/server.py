@@ -4,6 +4,29 @@ import serial
 import RPi.GPIO as GPIO
 import time
 
+SERIAL_PORT = "/dev/ttyACM1"
+BAUDRATE = 9600
+ser = serial.Serial(SERIAL_PORT, BAUDRATE)
+
+def valor_proporcional(x):
+    m = 50.505
+    b = 949.495
+    y = m * x + b
+    return y
+
+async def arduino_handle(websocket, path):
+    while True:
+        data = await websocket.recv()
+        if data:
+            value = int(data)
+            if value == 0:
+                command = "SPIN,0\n"
+            else:
+                speed = int(valor_proporcional(value))
+                command = f"SPIN,{speed}\n"
+            print(f"Enviando comando al Arduino: {command.strip()}")
+            ser.write(command.encode())
+
 # Función que lee datos desde el puerto serial
 def read_from_serial(port, baudrate=9600):
     ser = serial.Serial(port, baudrate)
@@ -15,10 +38,10 @@ def read_from_serial(port, baudrate=9600):
 async def send_temperature_data(websocket, path):
     for temperature_data in read_from_serial('/dev/ttyACM0'):
         await websocket.send(temperature_data)
-        await asyncio.sleep(1)  # Puedes ajustar este valor si es necesario
+        await asyncio.sleep(1)
 
 # Configuración del servo
-SERVO_PIN = 22  # Cambia este número al pin GPIO que estés usando
+SERVO_PIN = 22
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(SERVO_PIN, GPIO.OUT)
 pwm = GPIO.PWM(SERVO_PIN, 50)
@@ -32,7 +55,7 @@ def set_angle(angle):
     pwm.ChangeDutyCycle(duty)
     time.sleep(0.5)
 
-async def handle(websocket, path):
+async def servo_handle(websocket, path):
     print(f"¡Nuevo cliente conectado desde {websocket.remote_address}!")
     while True:
         data = await websocket.recv()
@@ -40,12 +63,14 @@ async def handle(websocket, path):
             angle = int(data)
             set_angle(angle)
 
-# Iniciar ambos servidores WebSocket
+# Iniciar los tres servidores WebSocket
 temperature_server = websockets.serve(send_temperature_data, "0.0.0.0", 8765)
-servo_server = websockets.serve(handle, '0.0.0.0', 5678)
+servo_server = websockets.serve(servo_handle, '0.0.0.0', 5678)
+arduino_server = websockets.serve(arduino_handle, '0.0.0.0', 5675)
 
-# Ejecutar ambos servidores en el bucle de eventos
+# Ejecutar los tres servidores en el bucle de eventos
 loop = asyncio.get_event_loop()
 loop.run_until_complete(temperature_server)
 loop.run_until_complete(servo_server)
+loop.run_until_complete(arduino_server)
 loop.run_forever()

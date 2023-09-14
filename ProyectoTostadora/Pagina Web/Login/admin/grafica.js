@@ -64,7 +64,19 @@ var token = localStorage.getItem('jwtToken');
 
 
 
+  const motorSocket = new WebSocket('ws:raspberrypi.local:5675');
 
+  document.getElementById('rpmslider').addEventListener('change', (event) => {
+      const value = event.target.value;
+      console.log(`Enviando valor al servidor del motor: ${value}`);  // Imprimir el valor que se está enviando
+      motorSocket.send(value);
+  });
+  
+  motorSocket.addEventListener('open', (event) => {
+    console.log('Conectado al servidor WebSocket del motor');
+  });
+
+  
 
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
   baseUrl = 'http://raspberrypi.local:3000';
