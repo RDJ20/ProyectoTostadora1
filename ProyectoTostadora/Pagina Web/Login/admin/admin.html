@@ -117,14 +117,12 @@
 
 
 
-    <script>
-      //Aqui se le pone el JS para los sliders
+<script>
+  const slideValues = document.querySelectorAll(".range:not(#slider2) .sliderValue span");
+  const inputSliders = document.querySelectorAll(".range:not(#slider2) input");
 
-      const slideValues = document.querySelectorAll(".range .sliderValue span");
-      const inputSliders = document.querySelectorAll(".range input");
-
-      // Itera sobre todos los sliders
-      inputSliders.forEach((inputSlider, index) => {
+  // Itera sobre todos los sliders excepto el primero
+  inputSliders.forEach((inputSlider, index) => {
       const slideValue = slideValues[index];
 
       inputSlider.oninput = () => {
@@ -137,9 +135,8 @@
       inputSlider.onblur = () => {
           slideValue.classList.remove("show");
       };
-      });
-    </script>
-    
+  });
+</script>
 
     <!-- // Para el websocket del numero de temperatura -->
     
