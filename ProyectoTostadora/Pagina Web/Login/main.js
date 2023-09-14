@@ -8,7 +8,7 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
   const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
   // Define la URL base según el entorno
-  const baseUrl = isLocal ? 'http://localhost:3000' : 'http://raspberrypi.local:3000';
+  const baseUrl = isLocal ? 'http://raspberrypi.local:3000' : 'http://raspberrypi.local:3000';
 
   try {
     const response = await fetch(`${baseUrl}/api/login`, {
@@ -28,9 +28,9 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
       const userRole = decodedToken.role;
 
       if (userRole === 1) {
-        window.location.href = './admin/admin.html';
+        window.location.href = `${baseUrl}/admin/admin.html`;
       } else if (userRole === 2) {
-        window.location.href = './user/user.html';
+        window.location.href = `${baseUrl}/user/user.html`;
       } else {
         throw new Error('Rol de usuario desconocido');
       }

@@ -118,23 +118,26 @@
 
 
     <script>
-      const allSliders = document.querySelectorAll(".range input");
-      const slidersToUse = Array.from(allSliders).filter(slider => slider.id !== 'rangeInput');
+      //Aqui se le pone el JS para los sliders
 
-      slidersToUse.forEach((inputSlider) => {
-      const slideValue = inputSlider.parentElement.querySelector(".sliderValue span");
+      const slideValues = document.querySelectorAll(".range .sliderValue span");
+      const inputSliders = document.querySelectorAll(".range input");
 
-        inputSlider.oninput = () => {
-        let value = inputSlider.value;
-        slideValue.textContent = value;
-        slideValue.style.left = (value / 2) + "%";
-        slideValue.classList.add("show");
-    };
+      // Itera sobre todos los sliders
+      inputSliders.forEach((inputSlider, index) => {
+      const slideValue = slideValues[index];
 
-    inputSlider.onblur = () => {
-        slideValue.classList.remove("show");
-    };
-    });
+      inputSlider.oninput = () => {
+          let value = inputSlider.value;
+          slideValue.textContent = value;
+          slideValue.style.left = (value/2) + "%";
+          slideValue.classList.add("show");
+      };
+
+      inputSlider.onblur = () => {
+          slideValue.classList.remove("show");
+      };
+      });
     </script>
     
 

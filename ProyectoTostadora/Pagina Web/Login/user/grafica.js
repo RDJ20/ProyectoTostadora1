@@ -7,7 +7,7 @@ var sigma = 5;
 var baseUrl = '';
 
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  baseUrl = 'http://localhost:3000';
+  baseUrl = 'http://raspberrypi.local:3000';
 } else {
   baseUrl = 'http://raspberrypi.local:3000';
 }

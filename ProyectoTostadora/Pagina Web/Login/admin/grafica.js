@@ -6,7 +6,7 @@ var mu = 9;
 var sigma = 5;
 var baseUrl = '';
 
-//Aqui va la conexion con el websocket
+//Aqui va la conexion con el websocket de la temperatura 
 const socket = new WebSocket('ws://raspberrypi.local:8765');
 
 socket.addEventListener('open', (event) => {
@@ -22,7 +22,7 @@ socket.addEventListener('message', (event) => {
 
 
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  baseUrl = 'http://localhost:3000';
+  baseUrl = 'http://raspberrypi.local:3000';
 } else {
   baseUrl = 'http://raspberrypi.local:3000';
 }
@@ -165,24 +165,7 @@ function crearBackgroundChart(dataset) {
 let realtimeChart = crearRealtimeChart();
 let backgroundChart = crearBackgroundChart(dataset);
 
-function obtenerDatos() {
-  return fetch(`${baseUrl}/api/datos`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Problema con la respuesta');
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (!data['data'] || data['data'].length === 0) {
-        throw new Error('Datos inesperados');
-      }
-      return data['data'][data['data'].length - 1]['temperatura_aire'];
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
+
 
 function agregarPunto(tiempo, dato) {
   realtimeChart.data.labels.push(tiempo);
@@ -222,7 +205,7 @@ export function actualizarTiempo(nuevoTiempo, nuevaTempt ) {
   backgroundChart = crearBackgroundChart(dataset);
 }
 
-//Nueva funcion
+//Funciones para que tome los datos de los sliders y los envie a las graficas
 export function tomarDatos()
 {
    var slider = document.querySelector("#slider1 input[type='range']");
@@ -255,6 +238,8 @@ function obtenerDatosJSON() {
   return json;
 }
 
+
+//Esta funcion necesita arreglo
 function enviarPerfil() {
   var nombre = document.getElementById("Nombreperfil").innerText;
   var temperatura = parseFloat(document.getElementById("tiempoFinal").innerText);
@@ -297,7 +282,8 @@ actualizarTiempo(tomarDatos(), tomarDatos2());
 
 
 document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("Guardar").addEventListener("click", enviarPerfil);
+  document.getElementById("Guardar").addEventListener("click", enviarPerfil   );
   document.getElementById("iniciar").addEventListener('click', comenzarGrafica);
-  document.getElementById("setear").addEventListener('click', setear);
+  document.getElementById("setear") .addEventListener('click', setear         );
+  
 });
