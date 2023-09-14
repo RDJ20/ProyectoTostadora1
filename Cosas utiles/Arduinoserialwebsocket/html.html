@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Random Number</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        #randomNumber {
+            font-size: 48px;
+            font-weight: bold;
+            color: #0077ff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Random Number from Server:</h2>
+        <div id="randomNumber">Waiting for a number...</div>
+    </div>
+
+    <script>
+        const socket = new WebSocket('ws://raspberrypi.local:8765');
+
+        socket.addEventListener('open', (event) => {
+            console.log('Connected to the WebSocket server');
+        });
+
+        socket.addEventListener('message', (event) => {
+            document.getElementById('randomNumber').textContent = event.data + " C.";
+        });
+    </script>
+
+
+
+</body>
+</html>

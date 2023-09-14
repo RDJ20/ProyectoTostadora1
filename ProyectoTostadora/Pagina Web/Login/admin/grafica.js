@@ -67,7 +67,8 @@ function crearRealtimeChart() {
       datasets: [{
         label: 'Datos Arduino',
         data: [],
-        backgroundColor: 'rgba(0, 123, 255, 0.5)',
+        fill: 'origin',
+        backgroundColor: 'rgba(113, 32, 255, 0.5)',
         borderColor: 'rgba(0, 123, 255, 1)',
         borderWidth: 1,
         pointRadius: 1 

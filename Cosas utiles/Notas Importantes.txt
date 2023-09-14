@@ -1,0 +1,7 @@
+Esto lo hice configurando mi raspberry pi para que se conectara a un router 
+y asi se pudiera convertir en un server local
+Tengo entendido que es usando Avahi de Raspberry pi por lo que de alli viene el nombre de 
+raspberrypi.local en las URL cuando tratamos de apuntar al server 
+
+Esto incluso funciona si pongo a mi telefono de router, pero por alguna razon no funciona 
+en iphone
