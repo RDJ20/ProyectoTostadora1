@@ -41,5 +41,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 }
 
   document.getElementById('BotonCerrarSesion').addEventListener('click', cerrarSesion);
+  document.getElementById("Guardar").addEventListener("click", enviarPerfil   );
+  document.getElementById("iniciar").addEventListener('click', comenzarGrafica);
+  document.getElementById("setear") .addEventListener('click', setear         );
+  
 
 });

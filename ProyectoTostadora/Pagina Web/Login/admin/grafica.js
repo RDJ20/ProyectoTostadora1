@@ -240,7 +240,7 @@ function obtenerDatosJSON() {
 
 
 //Esta funcion necesita arreglo
-function enviarPerfil() {
+export function enviarPerfil() {
   var nombre = document.getElementById("Nombreperfil").innerText;
   var temperatura = parseFloat(document.getElementById("tiempoFinal").innerText);
   var tiempo = parseFloat(document.getElementById("tempFinal").innerText);
@@ -273,17 +273,11 @@ function enviarPerfil() {
 
 
 
-function comenzarGrafica() {   
+export function comenzarGrafica() {   
   iniciarGrafica(tiempo);
 }
-function setear(){
+export function setear(){
 actualizarTiempo(tomarDatos(), tomarDatos2());
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("Guardar").addEventListener("click", enviarPerfil   );
-  document.getElementById("iniciar").addEventListener('click', comenzarGrafica);
-  document.getElementById("setear") .addEventListener('click', setear         );
-  
-});
