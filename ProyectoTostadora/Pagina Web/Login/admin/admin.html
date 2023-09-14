@@ -77,11 +77,20 @@
     </div>
     <div class="field">
       <div class="value left">0</div>
-      <input type="range" min="0" max="100" value="50" steps="1">
+      <input id="rangeInput" type="range" min="0" max="180" value="90" steps="10">
       <div class="value right">100</div>
       <div class="etiqueta">GAS.</div>
     </div>
 </div>
+
+<script>
+  const socket = new WebSocket('ws:raspberrypi.local:5678');
+
+  document.getElementById('rangeInput').addEventListener('change', (event) => {
+      const value = event.target.value;
+      socket.send(value);
+  });
+</script>
 
 
 
