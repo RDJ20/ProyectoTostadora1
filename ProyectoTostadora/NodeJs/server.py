@@ -27,7 +27,8 @@ pwm.start(0)
 def set_angle(angle):
     duty = ((angle / 180) * (12.5 - 2.5)) + 2.5
     duty = max(2.5, min(12.5, duty))
-    print(f"Ciclo de trabajo: {duty}")
+    print(f"Ángulo solicitado: {angle}°")
+    print(f"Ciclo de trabajo: {duty:.2f}%")
     pwm.ChangeDutyCycle(duty)
     time.sleep(0.5)
 
@@ -37,8 +38,7 @@ async def handle(websocket, path):
         data = await websocket.recv()
         if data:
             angle = int(data)
-            print(f"Recibido: {angle}")
-            set_angle(angle+30)
+            set_angle(angle)
 
 # Iniciar ambos servidores WebSocket
 temperature_server = websockets.serve(send_temperature_data, "0.0.0.0", 8765)
