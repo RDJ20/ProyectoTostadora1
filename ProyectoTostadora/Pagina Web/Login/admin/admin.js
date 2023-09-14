@@ -10,18 +10,13 @@ const isLocal = window.location.hostname === 'localhost' || window.location.host
 const baseUrl = isLocal ? 'http://raspberrypi.local:3000' : 'http://raspberrypi.local:3000';
 
 
-function cerrarSesion() {
-  localStorage.removeItem('jwtToken');
-  window.location.href = 'http://raspberrypi.local:3000/index.html';
-  console.log("Funciona el boton de cerrar sesion");
-}
+
 
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
 
-  document.getElementById('BotonCerrarSesion').addEventListener('click', cerrarSesion);
 
 
 });

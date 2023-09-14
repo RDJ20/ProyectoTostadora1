@@ -18,6 +18,37 @@ socket.addEventListener('message', (event) => {
 });
 
 
+var token = localStorage.getItem('jwtToken');
+
+  fetch(`${baseUrl}/api/admin`, {
+    method: 'GET', 
+    headers: {
+      'Authorization': 'Bearer ' + token,
+    }
+  })
+  .then(response => {
+    if(response.status === 403) {
+      window.location.href = 'http://raspberrypi.local:3000/index.html';
+    }
+    return response.json();
+  })
+  .then(data => {
+    document.getElementById('mensaje').textContent = '¡Hola Admin!';
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -50,6 +81,15 @@ for (var i = 0; i <= tiempo; i++) {
   var ft = A * Math.exp(-Math.pow(i - mu, 2) / (2 * Math.pow(sigma, 2)));
   dataset.push(ft);
 }
+function limpiarLocalStorage() {
+  localStorage.removeItem('nombre');
+  localStorage.removeItem('datos');
+  localStorage.removeItem('temperatura');
+  localStorage.removeItem('tiempo');
+  localStorage.removeItem('rpm');
+}
+
+limpiarLocalStorage();
 
 function verificarVariablesLocales() {
   const nombre = localStorage.getItem('nombre');
@@ -299,32 +339,17 @@ export function setear(){
 actualizarTiempo(tomarDatos(), tomarDatos2());
 }
 
+function cerrarSesion() {
+  localStorage.removeItem('jwtToken');
+  window.location.href = 'http://raspberrypi.local:3000/index.html';
+  console.log("Funciona el boton de cerrar sesion");
+}
+
 document.addEventListener("DOMContentLoaded", function() {
-
-  var token = localStorage.getItem('jwtToken');
-
-  fetch(`${baseUrl}/api/admin`, {
-    method: 'GET', 
-    headers: {
-      'Authorization': 'Bearer ' + token,
-    }
-  })
-  .then(response => {
-    if(response.status === 403) {
-      window.location.href = 'http://raspberrypi.local:3000/index.html';
-    }
-    return response.json();
-  })
-  .then(data => {
-    document.getElementById('mensaje').textContent = '¡Hola Admin!';
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-
 
   document.getElementById("Guardar").addEventListener("click", enviarPerfil);
   document.getElementById("iniciar").addEventListener('click', comenzarGrafica);
   document.getElementById("setear") .addEventListener('click', setear         );
+  document.getElementById('BotonCerrarSesion').addEventListener('click', cerrarSesion);
 });
 
