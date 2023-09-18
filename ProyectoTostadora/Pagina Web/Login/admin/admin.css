@@ -705,7 +705,7 @@ input[name="nombre"]:focus {
   font-family: 'CartographCF-Bold', sans-serif;
   transition: border-color 0.3s ease;
   text-align: center;
-  border: 12px solid #c9c9c9;
+  border: 2px solid #c9c9c9;
   border-radius: 25px;
   outline: none;
   width: 100%; /* Ocupar todo el ancho disponible */

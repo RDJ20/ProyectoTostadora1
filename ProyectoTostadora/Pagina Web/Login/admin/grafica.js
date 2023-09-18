@@ -421,8 +421,55 @@ function cerrarSesion() {
   console.log("Funciona el boton de cerrar sesion");
 }
 
-document.addEventListener("DOMContentLoaded", function() {
 
+
+function crearUsuario() {
+  // Obtén una referencia a los elementos del formulario
+  const usernameInput = document.getElementById("username");
+  const rolSelect = document.getElementById("rol");
+  const passwordInput = document.getElementById("password");
+
+  // Obtiene los valores de los campos
+  const username = usernameInput.value;
+  const rol = rolSelect.value;
+  const password = passwordInput.value;
+
+  // Crea un objeto con los datos que se enviarán en la solicitud POST
+  const userData = {
+    username: username,
+    rol: rol,
+    password: password,
+  };
+
+  // Realiza la solicitud POST a la API
+  fetch("http://raspberrypi.local:3000/api/createUser", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error en la solicitud");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Procesa la respuesta de la API si es necesario
+      console.log("Solicitud exitosa:", data);
+      // Puedes mostrar un mensaje de éxito o realizar otras acciones aquí
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      // Puedes mostrar un mensaje de error al usuario aquí
+    });
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("registrar").addEventListener("click", crearUsuario);
   document.getElementById("Guardar").addEventListener("click", enviarPerfil);
   document.getElementById("iniciar").addEventListener('click', comenzarGrafica);
   document.getElementById("setear") .addEventListener('click', setear         );
