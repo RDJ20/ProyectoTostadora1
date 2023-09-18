@@ -83,6 +83,11 @@ body {
     border: none;
     cursor: pointer;
   }
+
+  #crearusuario:hover {
+    background-color: #3f00ac;
+    color: #fff;
+  }
   
   .overlay {
     display: none;
@@ -116,18 +121,6 @@ body {
   }
   
   
-#cerrarFormulario:hover {
-    background-color: #3f00ac;
-    color: #fff;
-  }
-  
-
-
-
-
-
-
-
 
 
 
