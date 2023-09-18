@@ -320,6 +320,8 @@ body {
   background-color: #ffffff;
 }
 
+
+
 #botonTiempo {
   position: absolute;
   right: -25%; 
@@ -601,6 +603,7 @@ body {
 #textoarea {
   position: absolute;
   top: 85%;
+  color: #3f00ac;
  
 }
 
