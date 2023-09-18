@@ -60,51 +60,66 @@ fetch(`${baseUrl}/api/perfiles`)
     console.error('Ocurrió un error al obtener los perfiles:', error);
   });
 
-function crearBackgroundChart(datae) {
-  var ctxBackground = document.getElementById('backgroundChart').getContext('2d');
-  var labels = [];
-  var data = datae;
-
-  for (var i = 0; i <= tiempo; i++) {
-    labels.push(i.toString());
-  }
-
-  return new Chart(ctxBackground, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Gráfica de fondo',
-        data: data,
-        fill: false,
-        borderWidth: 1,
-        pointRadius: 1,
-        tension: 0.1
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false
-        }
+  function crearBackgroundChart(dataset) {
+    var ctxBackground = document.getElementById('backgroundChart').getContext('2d');
+    var labels = [];
+    var data = dataset;
+   
+  
+    for (var i = 0; i <= tiempo; i++) {
+      labels.push(i.toString());
+    }
+  
+    return new Chart(ctxBackground, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Gráfica de fondo',
+          data: data,
+          fill: 'origin',
+          backgroundColor: 'rgba(75, 192, 192, 0.5)',
+          borderColor: 'rgb(0, 255, 212)',
+          borderWidth: 1,
+          pointRadius: 1,
+          tension: 0.1
+        }]
       },
-      scales: {
-        x: {
-          type: 'linear',
-          display: true,
-          beginAtZero: true,
-          max: tiempo,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          }
         },
-        y: {
-          beginAtZero: true,
-          max: temperaturaMax,
+        scales: {
+          x: {
+            type: 'linear',
+            display: true,
+            beginAtZero: true,
+            max: tiempo,
+            grid: {
+              color: 'rgba(0, 0, 0, 0)'
+            },
+            ticks: {
+              color: 'rgba(0, 0, 0, 0)'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            max: temperaturaMax,
+            grid: {
+              color: 'rgba(0, 0, 0, 0)'
+            },
+            ticks: {
+              color: 'rgba(0, 0, 0, 0)'
+            }
+          }
         }
       }
-    }
-  });
-}
+    });
+  }
 
 document.getElementById('botonUsar').addEventListener('click', function() {
   const token = localStorage.getItem('jwtToken');

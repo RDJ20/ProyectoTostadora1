@@ -338,7 +338,7 @@ function obtenerDatosJSON() {
 
 
 export function enviarPerfil() {
-  var nombre = document.getElementById("nombreprofile").innerText;
+  var nombre = document.getElementById("nombreprofile").value;
   var temperatura = parseFloat(document.getElementById("slitemperatura").value);
   var tiempo = parseFloat(document.getElementById("slitiempo").value);
   var RPM = parseInt(document.getElementById("rpmslider").value);
