@@ -127,6 +127,68 @@ body {
 
 
 
+/* Estilo para el formulario */
+.formulario {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Mostrar los elementos en una columna */
+  align-items: center; /* Centrar horizontalmente los elementos */
+}
+
+/* Estilo para los grupos de formulario */
+.form-group {
+  margin-bottom: 10px; /* Espacio entre grupos de formulario */
+}
+
+/* Estilo para las etiquetas de formulario */
+.form-group label {
+  display: block; /* Mostrar etiquetas en una línea separada */
+  text-align: left;
+}
+
+/* Estilo para los campos de entrada */
+.form-group input {
+  width: 100%; /* Ocupar todo el ancho disponible */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
