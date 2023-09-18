@@ -133,9 +133,9 @@ function verificarVariablesLocales() {
     localStorage.removeItem('rpm');
 
 
-    realtimeChart = crearRealtimeChart();
-    backgroundChart = crearBackgroundChart(dataset);
-    // actualizarTiempo(tiempo1,temperatura);
+    let realtimeChart = crearRealtimeChart();
+    let backgroundChart = crearBackgroundChart(dataset);
+     actualizarTiempo(tiempo1,temperatura);
   }
     
   
@@ -248,8 +248,7 @@ function crearBackgroundChart(dataset) {
   });
 }
 
-let realtimeChart = crearRealtimeChart();
-let backgroundChart = crearBackgroundChart(dataset);
+
 
 
 
