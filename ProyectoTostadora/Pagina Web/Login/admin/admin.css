@@ -109,8 +109,9 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     text-align: center;
     z-index: 1;
-    width: 40%; /* Ajusta el ancho como desees */
-    margin: 0 auto; /* Esto centra el formulario horizontalmente en su contenedor */
+    width: 20%; 
+    margin: 0 auto; 
+    background: radial-gradient(circle, #ffffff, #4a00d2);
 }
   
   button#cerrarFormulario {
