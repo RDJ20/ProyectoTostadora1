@@ -110,7 +110,7 @@ function verificarVariablesLocales() {
   if (nombre && datos && temperatura && tiempo1 && rpm) {
 
     document.getElementById('nombreP').textContent = nombre;
-    
+
     dataset = datos;
 
     const tiempoSlider = document.getElementById('slitiempo');
@@ -131,9 +131,14 @@ function verificarVariablesLocales() {
     localStorage.removeItem('temperatura');
     localStorage.removeItem('tiempo');
     localStorage.removeItem('rpm');
-  }
 
-  actualizarTiempo(tiempo1,temperatura);
+
+    realtimeChart = crearRealtimeChart();
+    backgroundChart = crearBackgroundChart(dataset);
+    actualizarTiempo(tiempo1,temperatura);
+  }
+    
+  
 }
 
 verificarVariablesLocales();
