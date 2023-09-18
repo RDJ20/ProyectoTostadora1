@@ -103,8 +103,6 @@ for (var i = 0; i <= tiempo; i++) {
 
 
 
-    let realtimeChart = crearRealtimeChart();
-    let backgroundChart = crearBackgroundChart(dataset);
 
 function verificarVariablesLocales() {
   const nombre = localStorage.getItem('nombre');
@@ -139,15 +137,18 @@ function verificarVariablesLocales() {
     localStorage.removeItem('rpm');
 
 
-    let realtimeChart = crearRealtimeChart();
-    let backgroundChart = crearBackgroundChart(dataset);
-    //  actualizarTiempo(tiempo1,temperatura);
+    
+    actualizarTiempo(tiempo1,temperatura);
   }
     
   
 }
 
 verificarVariablesLocales();
+
+
+let realtimeChart = crearRealtimeChart();
+let backgroundChart = crearBackgroundChart(dataset);
 
 function crearRealtimeChart() {
   var ctxRealtime = document.getElementById('realtimeChart').getContext('2d');
