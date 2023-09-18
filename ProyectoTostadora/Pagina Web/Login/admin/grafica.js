@@ -141,7 +141,7 @@ function verificarVariablesLocales() {
 
     let realtimeChart = crearRealtimeChart();
     let backgroundChart = crearBackgroundChart(dataset);
-     actualizarTiempo(tiempo1,temperatura);
+    //  actualizarTiempo(tiempo1,temperatura);
   }
     
   
