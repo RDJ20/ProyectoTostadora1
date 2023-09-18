@@ -337,7 +337,6 @@ function obtenerDatosJSON() {
 
 
 
-// Modificar la función para obtener los valores de los elementos como valores
 export function enviarPerfil() {
   var nombre = document.getElementById("nombreprofile").innerText;
   var temperatura = parseFloat(document.getElementById("slitemperatura").value);
@@ -352,6 +351,9 @@ export function enviarPerfil() {
     "datos": datos,
     "RPM": RPM
   };
+
+  // Imprime el objeto postData en la consola antes de enviarlo
+  console.log('Datos a enviar:', postData);
 
   fetch(`${baseUrl}/api/perfiles`, {
     method: 'POST',
@@ -368,8 +370,6 @@ export function enviarPerfil() {
     console.error('Ocurrió un error al enviar el perfil:', error);
   });
 }
-
-
 
 
 
