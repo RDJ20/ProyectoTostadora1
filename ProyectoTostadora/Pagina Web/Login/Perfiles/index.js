@@ -63,7 +63,9 @@ fetch(`${baseUrl}/api/perfiles`)
   function crearBackgroundChart(dataset) {
     var ctxBackground = document.getElementById('backgroundChart').getContext('2d');
     var labels = [];
-    var data = [22.45,22.55,22.49,22.49,22.55,22.51,22.55,22.49,22.53,22.52,22.57,22.49,22.59,22.66,22.58,22.6,22.6,22.53,22.69,22.57];
+    
+    var data = dataset;
+    console.log(data);
    
   
     for (var i = 0; i <= tiempo; i++) {
