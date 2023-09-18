@@ -100,6 +100,12 @@ for (var i = 0; i <= tiempo; i++) {
 
 // limpiarLocalStorage();
 
+
+
+
+    let realtimeChart = crearRealtimeChart();
+    let backgroundChart = crearBackgroundChart(dataset);
+
 function verificarVariablesLocales() {
   const nombre = localStorage.getItem('nombre');
   const datos = JSON.parse(localStorage.getItem('datos'));
