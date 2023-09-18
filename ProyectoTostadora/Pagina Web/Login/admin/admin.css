@@ -77,7 +77,7 @@ body {
 
   button#crearusuario {
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #5100ff;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -93,6 +93,7 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
+    z-index: 1;
   }
   
   .formulario {
@@ -101,6 +102,7 @@ body {
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     text-align: center;
+    z-index: 1;
   }
   
   button#cerrarFormulario {
@@ -109,6 +111,7 @@ body {
     background-color: #ccc;
     border: none;
     cursor: pointer;
+    z-index: 1;
   }
   
   
