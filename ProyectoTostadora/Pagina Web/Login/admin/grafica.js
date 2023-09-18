@@ -90,15 +90,15 @@ for (var i = 0; i <= tiempo; i++) {
 }
 
 
-function limpiarLocalStorage() {
-  localStorage.removeItem('nombre');
-  localStorage.removeItem('datos');
-  localStorage.removeItem('temperatura');
-  localStorage.removeItem('tiempo');
-  localStorage.removeItem('rpm');
-}
+// function limpiarLocalStorage() {
+//   localStorage.removeItem('nombre');
+//   localStorage.removeItem('datos');
+//   localStorage.removeItem('temperatura');
+//   localStorage.removeItem('tiempo');
+//   localStorage.removeItem('rpm');
+// }
 
-limpiarLocalStorage();
+// limpiarLocalStorage();
 
 function verificarVariablesLocales() {
   const nombre = localStorage.getItem('nombre');
@@ -108,19 +108,32 @@ function verificarVariablesLocales() {
   const rpm = localStorage.getItem('rpm');
 
   if (nombre && datos && temperatura && tiempo1 && rpm) {
+
     document.getElementById('nombreP').textContent = nombre;
+    
     dataset = datos;
-    document.getElementById('tiempoFinal').textContent = temperatura;
-    document.getElementById('tempFinal').textContent = tiempo1;
-    document.getElementById('rpmint').textContent = rpm;
-    tiempo = parseInt(tiempo1);
-    temperaturaMax = parseInt(temperatura);
+
+    const tiempoSlider = document.getElementById('slitiempo');
+        tiempo = parseInt(tiempo1);
+        tiempoSlider.value = tiempo;
+
+    const tempSlider = document.getElementById('slitemperatura');
+        temperaturaMax = parseInt(temperatura);
+        tempSlider.value = temperaturaMax;
+
+    const rpmSlider = document.getElementById('rpmslider');
+        rpmSlider.value = rpm;
+        
+
+
     localStorage.removeItem('nombre');
     localStorage.removeItem('datos');
     localStorage.removeItem('temperatura');
     localStorage.removeItem('tiempo');
     localStorage.removeItem('rpm');
   }
+
+  actualizarTiempo(tiempo1,temperatura);
 }
 
 verificarVariablesLocales();
