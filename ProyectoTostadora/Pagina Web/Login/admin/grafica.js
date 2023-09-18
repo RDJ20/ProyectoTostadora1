@@ -19,6 +19,17 @@ socket.addEventListener('message', (event) => {
 
 
 
+const mostrarFormularioBtn = document.getElementById("crearusuario");
+const cerrarFormularioBtn = document.getElementById("cerrarFormulario");
+const overlay = document.getElementById("overlay");
+
+mostrarFormularioBtn.addEventListener("click", () => {
+    overlay.style.display = "flex";
+});
+
+cerrarFormularioBtn.addEventListener("click", () => {
+    overlay.style.display = "none";
+});
 
 
 

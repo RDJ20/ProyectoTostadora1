@@ -17,11 +17,26 @@
       <nav>
         <a href="#">Lotes</a>
         <a href="http://raspberrypi.local:3000/Perfiles/index.html">Perfiles</a>
-        <a href="#">Crear Usuario</a>
+        <button href="#" id="crearusuario">Crear Usuario</button>
         <a href="#" id="BotonCerrarSesion" class="logout">Cerrar sesión</a>
       </nav>
     </div>
   </header>
+
+
+  <div id="overlay" class="overlay">
+    <div id="formulario" class="formulario">
+        <h2>Crear Usuario</h2>
+        <!-- Aquí coloca los campos del formulario de registro -->
+        <form>
+            <!-- Campos del formulario (por ejemplo, nombre, correo, contraseña, etc.) -->
+            <!-- Añade un botón para enviar el formulario -->
+            <button type="submit">Registrar</button>
+        </form>
+        <button id="cerrarFormulario">Cerrar</button>
+    </div>
+  </div>
+
 
     
    
