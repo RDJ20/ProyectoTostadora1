@@ -138,7 +138,7 @@ function verificarVariablesLocales() {
 
 
     
-    actualizarTiempo(tiempo1,temperaturaMax);
+    actualizarTiempo(tiempo,temperaturaMax);
   }
     
   
