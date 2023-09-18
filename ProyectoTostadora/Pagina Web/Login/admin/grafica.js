@@ -34,6 +34,17 @@ cerrarFormularioBtn.addEventListener("click", () => {
 
 
 
+const overlay1 = document.getElementById("overlay1");
+
+function mostrarRegistroLote(){
+  overlay1.style.display = "flex";
+}
+
+function ocultarRegistroLote(){
+  overlay1.style.display = "none";
+}
+
+
 
 var token = localStorage.getItem('jwtToken');
 
@@ -289,6 +300,7 @@ export function iniciarGrafica(tiempo) {
         socket.removeEventListener('message', messageHandler);
         console.log("Evento 'message' detenido después de alcanzar el límite de etiquetas.");
         repeticion =0;
+        mostrarRegistroLote();
         return;
       }
 
@@ -394,6 +406,7 @@ export function comenzarGrafica() {
 export function setear(){
 actualizarTiempo(tomarDatos(), tomarDatos2());
 }
+
 
 function cerrarSesion() {
   localStorage.removeItem('jwtToken');
