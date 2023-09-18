@@ -46,6 +46,7 @@ fetch(`${baseUrl}/api/perfiles`)
             document.getElementById('Tiempo').textContent = tiempo1
 
             if (backgroundChart) backgroundChart.destroy();
+            datae = JSON.parse(datae)
             backgroundChart = crearBackgroundChart(datae);
           })
           .catch(error => {
@@ -64,7 +65,7 @@ fetch(`${baseUrl}/api/perfiles`)
     var ctxBackground = document.getElementById('backgroundChart').getContext('2d');
     var labels = [];
     
-    var data = [dataset];
+    var data = dataset;
     console.log(data);
    
   
