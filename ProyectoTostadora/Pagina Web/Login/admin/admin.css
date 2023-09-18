@@ -698,20 +698,19 @@ input[name="nombre"]:focus {
 
 /* Estilo para los campos de entrada */
 .campo {
-  left: 1%;
   font-family: 'CartographCF-Bold', sans-serif;
   transition: border-color 0.3s ease;
   text-align: center;
-  border: 6px solid #c9c9c9;
+  border: 12px solid #c9c9c9;
   border-radius: 25px;
   outline: none;
   width: 100%; /* Ocupar todo el ancho disponible */
   padding: 8px;
+  padding-left: 5px; 
 }
 
 /* Estilo para los campos de entrada cuando están enfocados */
 .campo:focus {
-  border: 6px;
   border-color: #4135e6; /* Cambia el color del borde al hacer foco */
 }
 
