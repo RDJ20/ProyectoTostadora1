@@ -333,12 +333,16 @@ function obtenerDatosJSON() {
 }
 
 
-//Esta funcion necesita arreglo
+
+
+
+
+// Modificar la función para obtener los valores de los elementos como valores
 export function enviarPerfil() {
-  var nombre = document.getElementById("Nombreperfil").innerText;
-  var temperatura = parseFloat(document.getElementById("tiempoFinal").innerText);
-  var tiempo = parseFloat(document.getElementById("tempFinal").innerText);
-  var RPM = parseInt(document.getElementById("rpmint").innerText);
+  var nombre = document.getElementById("nombreprofile").innerText;
+  var temperatura = parseFloat(document.getElementById("slitemperatura").value);
+  var tiempo = parseFloat(document.getElementById("slitiempo").value);
+  var RPM = parseInt(document.getElementById("rpmslider").value);
   var datos = obtenerDatosJSON().datos;
 
   var postData = {
@@ -364,6 +368,32 @@ export function enviarPerfil() {
     console.error('Ocurrió un error al enviar el perfil:', error);
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
