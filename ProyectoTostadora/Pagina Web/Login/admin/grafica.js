@@ -144,11 +144,13 @@ function verificarVariablesLocales() {
   
 }
 
-verificarVariablesLocales();
+
 
 
 let realtimeChart = crearRealtimeChart();
 let backgroundChart = crearBackgroundChart(dataset);
+
+verificarVariablesLocales();
 
 function crearRealtimeChart() {
   var ctxRealtime = document.getElementById('realtimeChart').getContext('2d');
