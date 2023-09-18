@@ -64,7 +64,7 @@ fetch(`${baseUrl}/api/perfiles`)
     var ctxBackground = document.getElementById('backgroundChart').getContext('2d');
     var labels = [];
     
-    var data = dataset;
+    var data = [dataset];
     console.log(data);
    
   
