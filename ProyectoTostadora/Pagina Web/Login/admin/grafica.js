@@ -5,6 +5,7 @@ var A = 100;
 var mu = 9;
 var sigma = 5;
 var baseUrl = '';
+let repeticion = 0;
 
 //Aqui va la conexion con el websocket de la temperatura 
 const socket = new WebSocket('ws://raspberrypi.local:8765');
@@ -280,12 +281,12 @@ function agregarPunto(tiempo, dato) {
 
 
 export function iniciarGrafica(tiempo) {
-  let repeticion = 0;
   const messageHandler = (event) => {
       const dato =  parseFloat(event.data);
       if (repeticion >= tiempo+1) {
         socket.removeEventListener('message', messageHandler);
-        console.log("Evento 'message' detenido después de alcanzar el límite de etiquetas."); // Mensaje en consola
+        console.log("Evento 'message' detenido después de alcanzar el límite de etiquetas.");
+        repeticion =0;
         return;
       }
 
@@ -381,29 +382,6 @@ export function enviarPerfil() {
     console.error('Ocurrió un error al enviar el perfil:', error);
   });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
