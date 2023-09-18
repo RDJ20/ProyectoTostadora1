@@ -711,6 +711,7 @@ input[name="nombre"]:focus {
 
 /* Estilo para los campos de entrada cuando están enfocados */
 .campo:focus {
+  border: 6px;
   border-color: #4135e6; /* Cambia el color del borde al hacer foco */
 }
 
