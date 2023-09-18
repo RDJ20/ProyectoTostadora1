@@ -431,13 +431,21 @@ function crearUsuario() {
 
   // Obtiene los valores de los campos
   const username = usernameInput.value;
-  const rol = rolSelect.value;
+  const rol = rolSelect.value; // Valor del rol seleccionado
   const password = passwordInput.value;
+
+  // Mapea el valor del rol a 1 (admin) o 2 (user)
+  let roleId;
+  if (rol === "admin") {
+    roleId = 1;
+  } else if (rol === "user") {
+    roleId = 2;
+  }
 
   // Crea un objeto con los datos que se enviarán en la solicitud POST
   const userData = {
     username: username,
-    rol: rol,
+    roleId: roleId, // Asigna el valor del rol
     password: password,
   };
 
@@ -465,6 +473,7 @@ function crearUsuario() {
       // Puedes mostrar un mensaje de error al usuario aquí
     });
 }
+
 
 
 
