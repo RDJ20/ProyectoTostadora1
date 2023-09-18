@@ -116,6 +116,10 @@ body {
   }
   
   
+#cerrarFormulario:hover {
+    background-color: #3f00ac;
+    color: #fff;
+  }
   
 
 
