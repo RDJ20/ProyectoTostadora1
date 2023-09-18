@@ -123,7 +123,7 @@ fetch(`${baseUrl}/api/perfiles`)
       }
     });
   }
-
+ 
 document.getElementById('botonUsar').addEventListener('click', function() {
   const token = localStorage.getItem('jwtToken');
 
