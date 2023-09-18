@@ -116,6 +116,8 @@ for (var i = 0; i <= tiempo; i++) {
 
 
 
+
+
 function verificarVariablesLocales() {
   const nombre = localStorage.getItem('nombre');
   const datos = JSON.parse(localStorage.getItem('datos'));
@@ -454,8 +456,15 @@ function crearUsuario() {
 
 
 
+function parar(){
+  repeticion =tiempo;
+}
+
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("parar").addEventListener("click", parar);
   document.getElementById("registrar").addEventListener("click", crearUsuario);
   document.getElementById("Guardar").addEventListener("click", enviarPerfil);
   document.getElementById("iniciar").addEventListener('click', comenzarGrafica);
