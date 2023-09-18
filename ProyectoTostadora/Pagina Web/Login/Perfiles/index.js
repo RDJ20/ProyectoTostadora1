@@ -102,22 +102,22 @@ fetch(`${baseUrl}/api/perfiles`)
             display: true,
             beginAtZero: true,
             max: tiempo,
-            grid: {
-              color: 'rgba(0, 0, 0, 0)'
-            },
-            ticks: {
-              color: 'rgba(0, 0, 0, 0)'
-            }
+            // grid: {
+            //   color: 'rgba(0, 0, 0, 0)'
+            // },
+            // ticks: {
+            //   color: 'rgba(0, 0, 0, 0)'
+            // }
           },
           y: {
             beginAtZero: true,
             max: temperaturaMax,
-            grid: {
-              color: 'rgba(0, 0, 0, 0)'
-            },
-            ticks: {
-              color: 'rgba(0, 0, 0, 0)'
-            }
+            // grid: {
+            //   color: 'rgba(0, 0, 0, 0)'
+            // },
+            // ticks: {
+            //   color: 'rgba(0, 0, 0, 0)'
+            // }
           }
         }
       }
