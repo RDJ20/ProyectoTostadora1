@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const userService = require('../services/userService');
+const bcrypt = require('bcrypt'); 
 
 const SECRET_KEY = 'UMG123'; 
 
