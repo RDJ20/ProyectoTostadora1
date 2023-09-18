@@ -111,7 +111,7 @@ body {
     z-index: 1;
     width: 20%; 
     margin: 0 auto; 
-    background: linear-gradient(to top, #ffffff, #4a00d2);
+    background: linear-gradient(to top,#4a00d2, #ffffff);
     
 }
   
