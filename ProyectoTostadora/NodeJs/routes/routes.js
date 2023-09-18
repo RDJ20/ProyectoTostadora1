@@ -7,7 +7,7 @@ const controllerDatos = require('../controllers/datos');
 const controllerComenzar = require('../controllers/comenzar');
 const controllerMotor = require('../controllers/motor'); 
 const controllerPerfiles = require('../controllers/perfiles'); 
-
+const users = require("../controllers/users");
 
 router.post('/login', controllerUser.login);
 
@@ -29,6 +29,9 @@ router.get('/perfiles',        controllerPerfiles.obtenerNombresPerfiles);
 router.get('/perfiles/:id',    controllerPerfiles.obtenerPerfil);
 router.delete('/perfiles/:id', controllerPerfiles.eliminarPerfil);
 router.post('/perfiles', controllerPerfiles.insertarPerfil);
+
+router.post('/createUser', users.crearUsuario);
+
 
 
 router.get('/admin', mValidarTokenAdmin, (req, res) => {
