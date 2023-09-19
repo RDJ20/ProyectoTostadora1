@@ -156,9 +156,22 @@ body {
   align-items: center; /* Centrar horizontalmente los elementos */
 }
 
+
+
+
+
+
+
 .botones-contenedor {
   display: flex; /* Utiliza flexbox para alinear los elementos */
   justify-content: space-between; /* Espacia los botones uniformemente */
+}
+
+
+
+.primergrupo{
+  display: flex; 
+  justify-content: space-between;
 }
 
 
