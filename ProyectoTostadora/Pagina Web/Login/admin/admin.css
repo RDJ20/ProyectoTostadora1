@@ -159,6 +159,7 @@ body {
 
 
 #perfilname{
+  display: absolute;
   padding-left: 4%;
 }
 
