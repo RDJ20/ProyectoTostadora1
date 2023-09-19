@@ -498,7 +498,56 @@ function parar(){
 
 
 
+function registrarLote() {
+
+  const fechaActual = document.getElementById('fechaActual').value;
+  const perfilname = document.getElementById('perfilname').value;
+  const pesoI = document.getElementById('pesoI').value;
+  const pesoF = document.getElementById('pesoF').value;
+  const tiempoo = document.getElementById('tiempoo').value;
+  const temperaturaa = document.getElementById('temperaturaa').value;
+  const rpmm = document.getElementById('rpmm').value;
+
+  
+  const data = {
+      fecha: fechaActual,
+      nombre_perfil: perfilname,
+      peso_inicial: pesoI,
+      peso_final: pesoF,
+      tiempo: tiempoo,
+      temperatura: temperaturaa,
+      rpm: rpmm
+  };
+
+  
+  fetch('http://raspberrypi.local:3000/api/lotes', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.message) {
+          alert(data.message);
+      } else {
+          alert('Error al registrar el lote.');
+      }
+  })
+  .catch(error => {
+      console.error('Error:', error);
+      alert('Error al registrar el lote.');
+  });
+}
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("registrar1").addEventListener("click", registrarLote);
   document.getElementById("parar").addEventListener("click", parar);
   document.getElementById("registrar").addEventListener("click", crearUsuario);
   document.getElementById("Guardar").addEventListener("click", enviarPerfil);
