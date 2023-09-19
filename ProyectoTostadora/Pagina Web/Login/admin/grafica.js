@@ -38,6 +38,16 @@ const overlay1 = document.getElementById("overlay1");
 
 function mostrarRegistroLote(){
   overlay1.style.display = "flex";
+
+    let fecha = new Date();
+    let dia = ("0" + fecha.getDate()).slice(-2);
+    let mes = ("0" + (fecha.getMonth() + 1)).slice(-2);
+    let año = fecha.getFullYear();
+
+    let fechaFormateada = año + '-' + mes + '-' + dia;
+    let perfilnombre = document.getElementById('nombreP').value;
+    document.getElementById('fechaActual').value = fechaFormateada;
+    document.getElementById('perfilname').value = fechaFormateada;
 }
 
 function ocultarRegistroLote(){
