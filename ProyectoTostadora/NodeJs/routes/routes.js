@@ -8,6 +8,7 @@ const controllerComenzar = require('../controllers/comenzar');
 const controllerMotor = require('../controllers/motor'); 
 const controllerPerfiles = require('../controllers/perfiles'); 
 const users = require("../controllers/users");
+const lotes =require('../controllers/lotes');
 
 router.post('/login', controllerUser.login);
 
@@ -32,7 +33,9 @@ router.post('/perfiles', controllerPerfiles.insertarPerfil);
 
 router.post('/createUser', users.crearUsuario);
 
-
+router.get('/lotes',lotes.obtenerLotes);
+router.post('/lotes',lotes.crearLote);
+router.delete('/lotes',lotes.eliminarLote);
 
 router.get('/admin', mValidarTokenAdmin, (req, res) => {
     res.status(200).json({ message: 'Token válido' });
