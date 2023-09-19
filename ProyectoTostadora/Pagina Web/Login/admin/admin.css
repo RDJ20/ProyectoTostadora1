@@ -156,6 +156,11 @@ body {
   align-items: center; /* Centrar horizontalmente los elementos */
 }
 
+.botones-contenedor {
+  display: flex; /* Utiliza flexbox para alinear los elementos */
+  justify-content: space-between; /* Espacia los botones uniformemente */
+}
+
 
 .formulario1 {
   background-color: #fff;

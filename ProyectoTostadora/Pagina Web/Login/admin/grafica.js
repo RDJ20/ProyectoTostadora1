@@ -45,9 +45,9 @@ function mostrarRegistroLote(){
     let año = fecha.getFullYear();
 
     let fechaFormateada = año + '-' + mes + '-' + dia;
-    let perfilnombre = document.getElementById('nombreP').value;
-    document.getElementById('fechaActual').value = perfilnombre;
-    document.getElementById('perfilname').value = fechaFormateada;
+    let perfilnombre = document.getElementById('nombreP').innerText;
+    document.getElementById('fechaActual').value = fechaFormateada;
+    document.getElementById('perfilname').value = perfilnombre;
 }
 
 function ocultarRegistroLote(){
