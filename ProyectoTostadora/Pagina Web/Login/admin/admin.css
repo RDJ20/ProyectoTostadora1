@@ -154,20 +154,51 @@ body {
   z-index: 1;
   width: 40%; 
   margin: 0 auto; 
-  background: linear-gradient(to top,#4a00d2, #ffffff);
+  background: linear-gradient(to top,#eb675d, #ffffff);
 }
 
 
-#perfilname{
-  margin-right: 10px;
+#fechaActual{
+  margin-right: 50px;
 }
 
 
 .primergrupo{
   display: flex; 
   justify-content: space-between;
-  width: 100%;
+  
+  
 }
+.segundogrupo{
+  display: flex; 
+  justify-content: space-between;
+  
+}
+
+.tercergrupo{
+  display: flex; 
+  justify-content: space-between;
+  
+  
+}
+
+#tiempoo{
+  font-family: 'CartographCF-Bold', sans-serif;
+}
+#temperaturaa{
+  font-family: 'CartographCF-Bold', sans-serif;
+}
+#rpmm{
+  font-family: 'CartographCF-Bold', sans-serif;
+}
+/* #pesoI{
+  margin-right: -10px;
+
+}
+
+#pesoF{
+  margin-right: -10px; }*/
+
 
 
 

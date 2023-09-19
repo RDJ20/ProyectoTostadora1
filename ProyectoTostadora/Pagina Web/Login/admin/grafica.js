@@ -22,6 +22,7 @@ socket.addEventListener('message', (event) => {
 
 const mostrarFormularioBtn = document.getElementById("crearusuario");
 const cerrarFormularioBtn = document.getElementById("cerrarFormulario");
+const cerrarFormularioBtn1 = document.getElementById("cerrarFormulario1");
 const overlay = document.getElementById("overlay");
 
 mostrarFormularioBtn.addEventListener("click", () => {
@@ -32,13 +33,16 @@ cerrarFormularioBtn.addEventListener("click", () => {
     overlay.style.display = "none";
 });
 
+cerrarFormularioBtn1.addEventListener("click", () => {
+  overlay1.style.display = "none";
+});
 
 
 const overlay1 = document.getElementById("overlay1");
 
 function mostrarRegistroLote(){
   overlay1.style.display = "flex";
-
+    repeticion = 0;
     let fecha = new Date();
     let dia = ("0" + fecha.getDate()).slice(-2);
     let mes = ("0" + (fecha.getMonth() + 1)).slice(-2);
@@ -50,9 +54,7 @@ function mostrarRegistroLote(){
     document.getElementById('perfilname').value = perfilnombre;
 }
 
-function ocultarRegistroLote(){
-  overlay1.style.display = "none";
-}
+
 
 
 
@@ -309,7 +311,7 @@ export function iniciarGrafica(tiempo) {
       if (repeticion >= tiempo+1) {
         socket.removeEventListener('message', messageHandler);
         console.log("Evento 'message' detenido después de alcanzar el límite de etiquetas.");
-        repeticion =0;
+        repeticion = 0;
         mostrarRegistroLote();
         return;
       }

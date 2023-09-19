@@ -59,7 +59,7 @@
 
 <div id="overlay1" class="overlay">
   <div id="formulario1" class="formulario1">
-      <h2>Crear Usuario</h2>
+      <h2>Lote</h2>
       <form>
 
           <div class="primergrupo">
@@ -70,12 +70,15 @@
           </div>
 
           <div class="form-group">
-            <label for="Perfil">Nombre Perfil:</label>
+            <label for="Perfil">   Nombre Perfil:</label>
             <input type="text" id="perfilname" name="perfilname" class="campo" placeholder="Italiano" required>
            </div>
            </div>
 
 
+
+
+           <div class="segundogrupo">
            <div class="form-group">
             <label for="pesoI">Peso Inicial:</label>
             <input type="number" id="pesoI" name="pesoI" class="campo" placeholder="450 g" required>
@@ -85,21 +88,32 @@
             <label for="pesoF">Peso Final:</label>
             <input type="number" id="pesoF" name="pesoF" class="campo" placeholder="240 g" required>
            </div>
+           </div>
 
-          <!-- Campo de Correo Electrónico -->
+          
+          
+        <div class="tercergrupo">
+
           <div class="form-group">
-            <label for="rol">Rol:</label>
-            <select id="rol1" name="rol" class="campo" required>
-                <option value="admin">Admin</option>
-                <option value="user">User</option>
-            </select>
+            <label for="tiempo">Tiempo:</label>
+            <input type="number" id="tiempoo" placeholder="30" required>
+           </div>
+
+           <div class="form-group">
+            <label for="temperaturaa">Temperatura:</label>
+            <input type="number" id="temperaturaa"  placeholder="180" required>
+           </div>
+           
+
+           <div class="form-group">
+            <label for="rpm">RPM</label>
+            <input type="number" id="rpmm"  placeholder="50" required>
+           </div>
+           
+
         </div>
+        
 
-          <!-- Campo de Contraseña -->
-          <div class="form-group">
-              <label for="password">Contraseña:</label>
-              <input type="password" id="password1" name="password" class="campo" placeholder="Contraseña segura" required>
-          </div>
 
           <!-- Botón para enviar el formulario -->
       </form>
