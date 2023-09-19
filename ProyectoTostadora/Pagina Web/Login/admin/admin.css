@@ -166,7 +166,7 @@ body {
 .primergrupo{
   display: flex; 
   justify-content: space-between;
-  width: 30%;
+  width: 100%;
 }
 
 
