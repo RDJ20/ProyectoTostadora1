@@ -159,10 +159,15 @@ body {
 
 
 #perfilname{
-  display: absolute;
-  padding-left: 4%;
+  margin-right: 10px;
 }
 
+
+.primergrupo{
+  display: flex; 
+  justify-content: space-between;
+  width: 30%;
+}
 
 
 
@@ -172,11 +177,6 @@ body {
 }
 
 
-
-.primergrupo{
-  display: flex; 
-  justify-content: space-between;
-}
 
 
 .formulario1 {
