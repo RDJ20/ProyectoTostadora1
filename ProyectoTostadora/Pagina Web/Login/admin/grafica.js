@@ -42,16 +42,26 @@ const overlay1 = document.getElementById("overlay1");
 
 function mostrarRegistroLote(){
   overlay1.style.display = "flex";
-    repeticion = 0;
-    let fecha = new Date();
-    let dia = ("0" + fecha.getDate()).slice(-2);
-    let mes = ("0" + (fecha.getMonth() + 1)).slice(-2);
-    let año = fecha.getFullYear();
+  repeticion = 0;
+  let fecha = new Date();
+  let dia = ("0" + fecha.getDate()).slice(-2);
+  let mes = ("0" + (fecha.getMonth() + 1)).slice(-2);
+  let año = fecha.getFullYear();
+  let fechaFormateada = año + '-' + mes + '-' + dia;
+  let perfilnombre = document.getElementById('nombreP').innerText;
+  document.getElementById('fechaActual').value = fechaFormateada;
+  document.getElementById('perfilname').value = perfilnombre;
 
-    let fechaFormateada = año + '-' + mes + '-' + dia;
-    let perfilnombre = document.getElementById('nombreP').innerText;
-    document.getElementById('fechaActual').value = fechaFormateada;
-    document.getElementById('perfilname').value = perfilnombre;
+
+  var temperaturaaaa = parseFloat(document.getElementById("slitemperatura").value);
+  var tiempoooo = parseFloat(document.getElementById("slitiempo").value);
+  var RPM = parseInt(document.getElementById("rpmslider").value);
+
+  console.log("datos: "+temperaturaaaa+", "+tiempoooo+", "+RPM);
+
+  document.getElementById("tiempoo").value = tiempoooo+"";
+  document.getElementById("temperaturaa").value = temperaturaaaa+"";
+  document.getElementById("rpmm").value = RPM+"";
 }
 
 
