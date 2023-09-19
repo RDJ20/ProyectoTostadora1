@@ -151,9 +151,10 @@ body {
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
-  display: flex;
-  flex-direction: column; /* Mostrar los elementos en una columna */
-  align-items: center; /* Centrar horizontalmente los elementos */
+  z-index: 1;
+  width: 40%; 
+  margin: 0 auto; 
+  background: linear-gradient(to top,#4a00d2, #ffffff);
 }
 
 
