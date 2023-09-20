@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- <script type="module" src="grafica.js"></script> -->
+  <script type="module" src="index.js"></script>
+  <script src="jwt-decode.js"></script>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="../user/user.html">
+          <h1>TostaCafe</h1>
+          </a>
+      </div>
+      <nav>
+        <button id="downloadCSV">CSV</button>
+        <a href="#" id="BotonCerrarSesion" class="logout">Cerrar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+
+
+
+  <body>
+    <div class="recycler-view">
+        
+    </div>
+
+    <script>
+    let lotesData = []; // Esta variable almacenará los datos obtenidos de la API
+
+// Función para formatear la fecha
+function formatearFecha(fechaISO) {
+    const fecha = new Date(fechaISO);
+    const day = String(fecha.getDate()).padStart(2, '0');
+    const month = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
+    const year = fecha.getFullYear();
+    return `${day}/${month}/${year}`;
+}
+
+fetch('http://raspberrypi.local:3000/api/lotes')
+  .then(response => response.json())
+  .then(data => {
+    lotesData = data; // Guardar los datos en la variable
+
+    // Imprimir la respuesta en la consola
+    console.log(lotesData);
+
+    // Construir el código HTML y agregarlo a la página
+    renderLotes(lotesData);
+  })
+  .catch(error => {
+    console.error('Error al obtener los datos:', error);
+  });
+
+function renderLotes(lotes) {
+  const recyclerView = document.querySelector('.recycler-view');
+
+  // Limpiar el contenido anterior
+  recyclerView.innerHTML = '';
+
+  // Iterar sobre los datos obtenidos y crear los elementos
+  lotes.forEach(lote => {
+    const itemElement = document.createElement('div');
+    itemElement.className = 'item';
+
+    // Usar la función formatearFecha para darle formato a la fecha
+    const fechaFormateada = formatearFecha(lote.fecha);
+
+    itemElement.innerHTML = `
+      <div class="contenedor">
+        <div class="izquierda">
+          <div class="titulo">${lote.nombre_perfil}</div>
+        </div>
+        <div class="derecha">
+          <div class="superior">
+            <div class="pesos">
+              <div class="variedad">
+                <div><span class="label1">Variedad: </span>${lote.tipo_cafe}</div>
+              </div>
+              <div><span class="label1">Peso Inicial:</span><br> ${lote.peso_inicial}g</div>
+              <div><span class="label1">Peso Final:</span><br> ${lote.peso_final}g</div>
+            </div>
+          </div>
+          <div class="inferior">
+            <div><span class="label">ID:</span><br> ${lote.id}</div>
+            <div><span class="label">Fecha:</span><br> ${fechaFormateada}</div>
+            <div><span class="label">Tiempo:</span><br> ${lote.tiempo} min</div>
+            <div><span class="label">RPM:</span><br> ${lote.rpm}</div>
+            <div><span class="label">Temperatura:</span><br> ${lote.temperatura}°C</div>
+          </div>
+        </div>
+        <div class = "masderecha">
+            <div><span class="delete">X</span></div>
+        </div>
+      </div>
+    `;
+
+    recyclerView.appendChild(itemElement);
+    const deleteButton = itemElement.querySelector('.delete');
+    deleteButton.addEventListener('click', function() {
+      // Confirmación antes de eliminar
+      if (confirm(`¿Estás seguro de que deseas eliminar el lote con ID ${lote.id}?`)) {
+        // Enviar solicitud DELETE
+        fetch(`http://raspberrypi.local:3000/api/lotes/${lote.id}`, {
+          method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Lote eliminado con éxito.');
+            // Opcional: eliminar visualmente el elemento de la lista
+            itemElement.remove();
+          } else {
+            console.log("puede que haya un problema,pero no se xd");
+          }
+        })
+        .catch(error => {
+          console.error('Error al eliminar el lote:', error);
+          alert('Ocurrió un error al intentar eliminar el lote.');
+        });
+      }
+    });
+  });
+  
+}
+
+
+document.getElementById('downloadCSV').addEventListener('click', function() {
+
+
+    fetch('http://raspberrypi.local:3000/api/lotes')
+    .then(response => response.json())
+    .then(data => {
+        const csvData = convertToCSV(data);
+        downloadCSV(csvData);
+    })
+    .catch(error => {
+        console.error('Error al obtener los datos:', error);
+    });
+});
+
+
+
+
+function convertToCSV(data) {
+    if (!Array.isArray(data)) {
+        data = [data];
+    }
+
+    // Convierte tus datos a formato CSV usando punto y coma como delimitador
+    const header = Object.keys(data[0]).join(';');
+    const rows = data.map(row => {
+        return Object.values(row).map(value => {
+            // Si el valor contiene comas, puntos y coma o saltos de línea, enciérralo entre comillas dobles
+            if (typeof value === 'string' && (value.includes(',') || value.includes(';') || value.includes('\n'))) {
+                return `"${value}"`;
+            }
+            return value;
+        }).join(';');
+    }).join('\n');
+
+    return header + '\n' + rows;
+}
+
+
+function downloadCSV(csvData) {
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'Lotes.csv';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
+
+
+    </script>
+
+  </body>
