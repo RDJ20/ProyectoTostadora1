@@ -19,11 +19,11 @@ exports.obtenerLotes = (req, res) => {
 
 // Crear un nuevo lote
 exports.crearLote = (req, res) => {
-  const { fecha, nombre_perfil, peso_inicial, peso_final, tiempo, temperatura, rpm } = req.body;
+  const { fecha, nombre_perfil, peso_inicial, peso_final, tiempo, temperatura, rpm, tipo_cafe } = req.body;
 
   pool.query(
-    'INSERT INTO LotesCafe (fecha, nombre_perfil, peso_inicial, peso_final, tiempo, temperatura, rpm) VALUES (?, ?, ?, ?, ?, ?, ?)',
-    [fecha, nombre_perfil, peso_inicial, peso_final, tiempo, temperatura, rpm],
+    'INSERT INTO LotesCafe (fecha, nombre_perfil, peso_inicial, peso_final, tiempo, temperatura, rpm, tipo_cafe) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+    [fecha, nombre_perfil, peso_inicial, peso_final, tiempo, temperatura, rpm, tipo_cafe],
     (error, result) => {
       if (error) {
         return res.status(500).json({

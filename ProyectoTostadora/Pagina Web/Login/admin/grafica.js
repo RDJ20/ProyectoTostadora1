@@ -507,6 +507,7 @@ function registrarLote() {
   const tiempoo = document.getElementById('tiempoo').value;
   const temperaturaa = document.getElementById('temperaturaa').value;
   const rpmm = document.getElementById('rpmm').value;
+  const tipocafe = document.getElementById('tipocafe').value;
 
   
   const data = {
@@ -516,7 +517,8 @@ function registrarLote() {
       peso_final: pesoF,
       tiempo: tiempoo,
       temperatura: temperaturaa,
-      rpm: rpmm
+      rpm: rpmm,
+      tipo_cafe: tipocafe
   };
 
   

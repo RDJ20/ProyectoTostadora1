@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- <script type="module" src="grafica.js"></script> -->
+  <script type="module" src="index.js"></script>
+  <script src="jwt-decode.js"></script>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="../admin/admin.html">
+          <h1>TostaCafe</h1>
+          </a>
+      </div>
+      <nav>
+        <a href="../Perfiles/index.html">Perfiles</a>
+        <a href="#">Crear Usuario</a>
+        <a href="#" id="BotonCerrarSesion" class="logout">Cerrar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+
+
+
+  <body>
+    <div class="recycler-view">
+        
+    </div>
+
+    <script>
+       const lotes = [
+            { 
+                id: 1, 
+                titulo: 'Italiano', 
+                fecha: '20/09/2023', 
+                pesoInicial: '500', 
+                pesoFinal: '450',
+                tiempo: '10',
+                rpm: '1200',
+                temperatura: '90'
+            },
+            { 
+                id: 2, 
+                titulo: 'Expresso', 
+                fecha: '21/09/2023', 
+                pesoInicial: '600', 
+                pesoFinal: '540',
+                tiempo: '8',
+                rpm: '1100',
+                temperatura: '92'
+            },
+        ];
+
+        const recyclerView = document.querySelector('.recycler-view');
+
+        
+
+        lotes.forEach(lote => {
+    const itemElement = document.createElement('div');
+    itemElement.className = 'item';
+
+    itemElement.innerHTML = `
+
+        <div class = "contenedor" >
+        
+            <div class = "izquierda" >
+                <div class="titulo">
+                    ${lote.titulo}
+                </div>
+            </div>
+            <div class = "derecha">
+            <div class="superior">
+                <div class="pesos">
+                    <div><span class="label1" >Variedad: </span> ${lote.pesoFinal}g</div>
+                    <div><span class="label1" >Peso Inicial:</span> ${lote.pesoInicial}g</div>
+                    <div><span class="label1" >Peso Final:</span> ${lote.pesoFinal}g</div>
+                    
+                </div>
+            </div>                                         
+
+            <div class="inferior">
+                <div><span class="label">ID:</span> ${lote.id}</div>
+                <div><span class="label">Fecha:</span> ${lote.fecha}</div>
+                <div><span class="label">Tiempo:</span> ${lote.tiempo} min</div>
+                <div><span class="label">RPM:</span> ${lote.rpm}</div>
+                <div><span class="label">Temperatura:</span> ${lote.temperatura}°C</div>
+            </div>
+            </div>
+
+         </div>
+    `;
+
+    recyclerView.appendChild(itemElement);
+});
+       
+
+    </script>
+
+  </body>
