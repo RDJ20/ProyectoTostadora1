@@ -431,8 +431,8 @@ actualizarTiempo(tomarDatos(), tomarDatos2());
 
 
 function cerrarSesion() {
-  // localStorage.removeItem('jwtToken');
-  // window.location.href = 'http://raspberrypi.local:3000/index.html';
+  localStorage.removeItem('jwtToken');
+  window.location.href = 'http://raspberrypi.local:3000/index.html';
   console.log("Funciona el boton de cerrar sesion");
 }
 
