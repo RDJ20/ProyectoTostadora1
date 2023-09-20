@@ -70,7 +70,7 @@ function mostrarRegistroLote(){
 
 var token = localStorage.getItem('jwtToken');
 
-  fetch(`${baseUrl}/api/admin`, {
+  fetch(`${baseUrl}/api/user`, {
     method: 'GET', 
     headers: {
       'Authorization': 'Bearer ' + token,
