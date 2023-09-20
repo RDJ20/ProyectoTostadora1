@@ -1,250 +1,801 @@
 #chartContainer {
-    position: relative;
-    top: -10%;
-    width: 70%;
-    right: 11%;
-    height: 400px;
-    background-color: #ffffff;
-    margin: 70px auto;
-    
-    
-    
+  position: relative;
+  top: -10%;
+  width: 70%;
+  right: 11%;
+  height: 400px;
+  background-color: #ffffff;
+  margin: 70px auto;
 }
+
+
+
 #realtimeChart {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 10;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 10;
 }
 #backgroundChart {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-image: url('../imagenes/Imagen\ baarra.png');
-    background-size: cover;
-    padding: 5px;
-    border-bottom: 1px solid #8e1313;
-  }
-  
-  .navbar .logo {
-    margin-left: 50px;
-    font-size: 13px;
-    font-weight: bold;
-    color: #8B4513; 
-  }
-  
-  nav a {
-    margin-right: 50px;
-    color: #774508;
-    text-decoration: none;
-    padding: 1px;
-    transition: color 0.3s ease;
-  }
-  
-  nav a:hover {
-    color: #8B4513;
-  }
-  
-  .logout {
-    color: white;
-    background-color: #8B4513; 
-    border: none;
-    border-radius: 0; 
-    padding: 10px 20px;
-  }
-  
-  .logout:hover {
-    background-color: #5a3510;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url('../imagenes/Imagen\ baarra.png');
+  background-size: cover;
+  padding: 5px;
+  border-bottom: 1px solid #8e1313;
+}
+
+.navbar .logo {
+  margin-left: 50px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #8B4513; 
+}
+
+nav a {
+  margin-right: 50px;
+  color: #774508;
+  text-decoration: none;
+  padding: 1px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #8B4513;
+}
+
+.logout {
+  color: white;
+  background-color: #8B4513; 
+  border: none;
+  border-radius: 0; 
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: #5a3510;
+}
 
 
-  #botonComenzar {
-    position: absolute;
-    right: -10%; 
-    top: 50%;
-    transform: translateY(-50%); 
-    padding: 10px;
-    background-color: #8B4513; 
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+button#crearusuario {
+  padding: 11px 20px;
+  background-color: #5100ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+#crearusuario:hover {
+  background-color: #3f00ac;
+  color: #fff;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.overlay1 {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.formulario {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  z-index: 1;
+  width: 20%; 
+  margin: 0 auto; 
+  background: linear-gradient(to top,#4a00d2, #ffffff);
+  
+}
+
+button#cerrarFormulario {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+
+
+
+
+
+
+
+/* Estilo para el formulario */
+.formulario1 {
+background-color: #fff;
+padding: 20px;
+border-radius: 5px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+text-align: center;
+z-index: 1;
+width: 40%; 
+margin: 0 auto; 
+background: linear-gradient(to top,#eb675d, #ffffff);
+}
+
+
+#fechaActual{
+margin-right: 50px;
+}
+
+
+.primergrupo{
+display: flex; 
+justify-content: space-between;
+
+
+}
+.segundogrupo{
+display: flex; 
+justify-content: space-between;
+
+}
+
+.tercergrupo{
+display: flex; 
+justify-content: space-between;
+
+
+}
+
+#tiempoo{
+font-family: 'CartographCF-Bold', sans-serif;
+}
+#temperaturaa{
+font-family: 'CartographCF-Bold', sans-serif;
+}
+#rpmm{
+font-family: 'CartographCF-Bold', sans-serif;
+}
+/* #pesoI{
+margin-right: -10px;
+
+}
+
+#pesoF{
+margin-right: -10px; }*/
+
+
+
+
+.botones-contenedor {
+display: flex; /* Utiliza flexbox para alinear los elementos */
+justify-content: space-between; /* Espacia los botones uniformemente */
+}
+
+
+
+
+.formulario1 {
+background-color: #fff;
+padding: 20px;
+border-radius: 5px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+text-align: center;
+display: flex;
+flex-direction: column; /* Mostrar los elementos en una columna */
+align-items: center; /* Centrar horizontalmente los elementos */
+}
+
+/* Estilo para los grupos de formulario */
+.form-group {
+margin-bottom: 10px; /* Espacio entre grupos de formulario */
+}
+
+/* Estilo para las etiquetas de formulario */
+.form-group label {
+display: block; /* Mostrar etiquetas en una línea separada */
+text-align: left;
+}
+
+/* Estilo para los campos de entrada */
+.form-group input {
+width: 100%; /* Ocupar todo el ancho disponible */
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 5px;
+outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#botonComenzar {
+  position: absolute;
+  right: -10%; 
+  top: 50%;
+  transform: translateY(-50%); 
+  padding: 10px;
+  background-color: #8B4513; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 #botonComenzar:hover {
-    background-color: #5a3510;
+  background-color: #5a3510;
 }
 
 #botonParar { 
-  position: absolute;
-  right: -6.5%; 
-  top: 60%; 
-  transform: translateY(-50%); 
-  padding: 10px;
-  background-color: #8B4513; 
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+position: absolute;
+right: -6.5%; 
+top: 60%; 
+transform: translateY(-50%); 
+padding: 10px;
+background-color: #8B4513; 
+color: white;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease;
 }
 
 #botonParar:hover {
-  background-color: #5a3510;
+background-color: #5a3510;
 }
 
 #botonComenzarRPM { 
-  position: absolute;
-  right: -22.5%; 
-  top: 40%;
-  transform: translateY(-50%); 
-  padding: 10px;
-  background-color: #8B4513; 
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+position: absolute;
+right: -22.5%; 
+top: 40%;
+transform: translateY(-50%); 
+padding: 10px;
+background-color: #8B4513; 
+color: white;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease;
 }
 
 #botonComenzarRPM:hover {
-  background-color: #5a3510;
+background-color: #5a3510;
 }
 
 
 .input {
-  position: absolute;
-  right: -7.5%; 
-  top: 40%; 
-  transform: translateY(-50%); 
-  padding: 10px;
-  width: 40px ; 
-  border: 1px solid #000;
+position: absolute;
+right: -7.5%; 
+top: 40%; 
+transform: translateY(-50%); 
+padding: 10px;
+width: 40px ; 
+border: 1px solid #000;
 }
 
 
 
 #temperatura {
-  position: absolute;
-  right: -16%; 
-  top: 25%; 
-  transform: translateY(-50%); 
-  padding: 10px;
-  width: 40px ; 
-  border: 1px solid #000;
+position: absolute;
+right: -16%; 
+top: 25%; 
+transform: translateY(-50%); 
+padding: 10px;
+width: 40px ; 
+border: 1px solid #000;
 }
 
 #tempFinal {
-  position: absolute;
-  right:  -7.5%; 
-  top: 29%; 
-  transform: translateY(-50%); 
-  padding: 10px;
-  width: 40px ; 
-  border: 1px solid #000;
+position: absolute;
+right:  -7.5%; 
+top: 29%; 
+transform: translateY(-50%); 
+padding: 10px;
+width: 40px ; 
+border: 1px solid #000;
 }
 
 
 #tiempo {
-  position: absolute;
-  right: -16%; 
-  top: 14%; 
-  transform: translateY(-50%); 
-  padding: 10px;
-  width: 40px ; 
-  border: 1px solid #000;
+position: absolute;
+right: -16%; 
+top: 14%; 
+transform: translateY(-50%); 
+padding: 10px;
+width: 40px ; 
+border: 1px solid #000;
 }
 
 #tiempoFinal {
-  position: absolute;
-  right:  -7.5%; 
-  top: 18%; 
-  transform: translateY(-50%); 
-  padding: 10px;
-  width: 40px ; 
-  border: 1px solid #000;
+position: absolute;
+right:  -7.5%; 
+top: 18%; 
+transform: translateY(-50%); 
+padding: 10px;
+width: 40px ; 
+border: 1px solid #000;
 }
 
 
 
-#Nombreperfil {
-  position: absolute;
-  right: -19%; 
-  top: 70%; 
-  transform: translateY(-50%); 
-  padding: 10px;
-  width: 130px ; 
-  border: 1px solid #000;
-}
 
 #Guardar {
-  position: absolute;
-  right:  -19%; 
-  top: 85%; 
-  transform: translateY(-50%); 
-  color: white;
-  padding: 10px;
-  width: 150px ; 
-  text-align: center;
-  background-color: #8B4513; 
+position: absolute;
+right:  57%; 
+top: 50%; 
+font-size: 100%;
+font-family: 'CartographCF-Bold', sans-serif;
+transform: translateY(-50%); 
+color: rgb(28, 197, 180);
+padding: 10px;
+width: 100px ; 
+text-align: center;
+border-radius: 40px;
+background-color: #fafafa; 
+border: none;
 }
 
 #Guardar:hover {
-  background-color: #5a3510;
+background-color: #ffffff;
 }
 
+
+
 #botonTiempo {
-  position: absolute;
-  right: -25%; 
-  top: 30%;
-  transform: translateY(-50%); 
-  padding: 10px;
-  background-color: #8B4513; 
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+position: absolute;
+right: -25%; 
+top: 30%;
+transform: translateY(-50%); 
+padding: 10px;
+background-color: #8B4513; 
+color: white;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease;
 }
 
 #botonTiempo:hover {
-  background-color: #5a3510;
+background-color: #5a3510;
 }
 
 #botonTemperatura {
-  position: absolute;
-  right: -29%; 
-  top: 19%;
-  transform: translateY(-50%); 
-  padding: 10px;
-  background-color: #8B4513; 
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+position: absolute;
+right: -29%; 
+top: 19%;
+transform: translateY(-50%); 
+padding: 10px;
+background-color: #8B4513; 
+color: white;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease;
 }
 
 #botonTemperatura:hover {
-  background-color: #5a3510;
+background-color: #5a3510;
 }
 
 #nombreP {
-  text-align: center;  
-   /* Define el ancho y el estilo de la frontera */
-  top: -20%;
-  left: 40%;
-  position: absolute ; 
+text-align: center;  
+ /* Define el ancho y el estilo de la frontera */
+top: 0%;
+left: 16%;
+top: -15%;
+position: absolute ; 
+color: #ffffff;
 }
+
+@font-face {
+font-family: 'CartographCF-Bold';
+src: url('CartographCF-Bold.otf') format('opentype');
+}
+
+.sidebar-container {
+position: absolute;
+right: -299px;
+height: 90%;
+top: -16%;  /* Puedes ajustar esto según dónde quieras que comience tu caja */
+width: 30%;  /* Ajusta el ancho según lo que necesites */
+background: linear-gradient(to bottom, #FC7A4A, #B03B3B);  /* Un color de fondo claro con un poco de transparencia */
+padding: 20px;  /* Espacio interior para que los elementos no toquen los bordes directamente */
+border-radius: 40px;  /* Bordes redondeados */
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Una ligera sombra para darle profundidad */
+}
+.sidebar-container2 {
+position: absolute;
+right: 5px;
+height: 5%;
+top: 85%;  /* Puedes ajustar esto según dónde quieras que comience tu caja */
+width: 20.5%;  /* Ajusta el ancho según lo que necesites */
+background: linear-gradient(to bottom, #FC7A4A, #B03B3B);  /* Un color de fondo claro con un poco de transparencia */
+padding: 20px;  /* Espacio interior para que los elementos no toquen los bordes directamente */
+border-radius: 40px;  /* Bordes redondeados */
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Una ligera sombra para darle profundidad */
+}
+
+.sidebar-container3 {
+position: absolute;
+right: 35%;
+height: 5%;
+top: -16%;  /* Puedes ajustar esto según dónde quieras que comience tu caja */
+width: 20.5%;  /* Ajusta el ancho según lo que necesites */
+background: linear-gradient(to bottom, #FC7A4A, #B03B3B);  /* Un color de fondo claro con un poco de transparencia */
+padding: 20px;  /* Espacio interior para que los elementos no toquen los bordes directamente */
+border-radius: 40px;  /* Bordes redondeados */
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Una ligera sombra para darle profundidad */
+}
+
+.sidebar-container4 {
+position: absolute;
+right: 11%;
+height: 10%;
+top: 5%;  /* Puedes ajustar esto según dónde quieras que comience tu caja */
+width: 60.5%;  /* Ajusta el ancho según lo que necesites */
+background: #ffffff;  /* Un color de fondo claro con un poco de transparencia */
+padding: 20px;  /* Espacio interior para que los elementos no toquen los bordes directamente */
+border-radius: 20px;  /* Bordes redondeados */
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Una ligera sombra para darle profundidad */
+}
+
+
+
+#tempe {
+text-align: center;  
+font-family: 'CartographCF-Bold', sans-serif;
+top: 0%;
+left: 60%;
+top: -10%;
+font-size: 250%;
+position: absolute ; 
+color: #000000;
+}
+
+#tempe1 {
+text-align: left;  
+font-family: 'CartographCF-Bold', sans-serif;
+top: 0%;
+left: 13%;
+top: -10%;
+font-size: 250%;
+position: absolute ; 
+color: #000000;
+}
+
+#tempe2 {
+text-align: center;  
+font-family: 'CartographCF-Bold', sans-serif;
+top: 0%;
+left: 15%;
+top: -10%;
+font-size: 80%;
+position: absolute ; 
+color: #000000;
+}
+
+#Titulo {
+text-align: center; 
+font-family: 'CartographCF-Bold', sans-serif; 
+color: #000000;
+font-size: 150%;
+height: 10%;
+
+}
+
+
+
+
+
+.logo a {
+text-decoration: none;
+}
+
+
+
+.range{
+right: 19%;
+position: absolute;
+top: 30%;
+height: 10%;
+width: 65%;
+background: #fff;
+border-radius: 10px;
+padding: 0 25px 0 15px;
+box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
+}
+.sliderValue{
+position: relative;
+width: 100%;
+}
+.sliderValue span{
+position: absolute;
+height: 45px;
+width: 45px;
+left: 70%;
+transform: translateX(-10%) scale(0);
+font-weight: 500;
+top: -50px;
+line-height: 55px;
+z-index: 2;
+color: #fff;
+transform-origin: bottom;
+transition: transform 0.3s ease-in-out;
+}
+.sliderValue span.show{
+transform: translateX(-65%) scale(0.75);
+}
+.sliderValue span:after{
+position: absolute;
+content: '';
+height: 100%;
+width: 100%;
+background: #664AFF;
+border: 3px solid #fff;
+z-index: -1;
+left: 30%;
+text-align: center;
+transform: translateX(-50%) rotate(45deg);
+border-bottom-left-radius: 50%;
+box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+border-top-left-radius: 50%;
+border-top-right-radius: 50%;
+}
+.field{
+display: flex;
+align-items: center;
+justify-content: center;
+height: 100%;
+position: relative;
+}
+.field .value{
+position: absolute;
+font-size: 18px;
+color: #664AFF;
+font-weight: 600;
+}
+.field .value.left{
+left:-5px;
+font-size: 10px;
+width: 30px;
+}
+.field .value.right{
+right: -33px;
+font-size: 10px;
+width: 30px;
+}
+
+.field .etiqueta{
+position: absolute;
+right:-40%;
+font-family: 'CartographCF-Bold', sans-serif;
+font-size: 100%;
+}
+
+
+.etiqueta{
+color: #ffffff;
+
+}
+
+.range input{
+-webkit-appearance: none;
+width: 530%;
+height: 3px;
+background: #ddd;
+border-radius: 5px;
+outline: none;
+border: none;
+z-index: 2222;
+}
+.range input::-webkit-slider-thumb{
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+background: red;
+border-radius: 50%;
+background: #664AFF;
+border: 1px solid #664AFF;
+cursor: pointer;
+}
+.range input::-moz-range-thumb{
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+background: red;
+border-radius: 50%;
+background: #664AFF;
+border: 1px solid #664AFF;
+cursor: pointer;
+}
+
+#slider1 {
+margin-top: 50px; 
+}
+#slider2 {
+margin-top: 100px;  
+}
+#slider3 {
+margin-top: 150px;  
+}
+
+
+
+#textoarea {
+position: absolute;
+top: 85%;
+color: #3f00ac;
+
+}
+
+input[name="nombre"] {
+position: absolute;
+font-family: 'CartographCF-Bold', sans-serif;
+padding: 12px 45px;
+border: 2px solid #c9c9c9;
+border-radius: 25px; /* Bordes curvados */
+outline: none; /* Elimina el borde azul al hacer foco */
+transition: border-color 0.3s ease; /* Transición suave al cambiar el color del borde */
+width: 130px;
+left: 120px;
+text-align: center;
+padding-left: 5px;
+padding-right: 5px;
+top: 18%;
+}
+
+
+
+input[name="nombre"]:focus {
+border-color: #4135e6; /* Cambia el color del borde al hacer foco */
+}
+
+
+
+
+#setear {
+position: absolute;
+right:  -65%; 
+left: 40%; 
+top: 20px;
+font-size: 100%;
+font-family: 'CartographCF-Bold', sans-serif;
+transform: translateY(-50%); 
+color: rgb(28, 197, 180);
+padding: 10px;
+width: 80px ; 
+text-align: center;
+border-radius: 40px;
+background-color: #fafafa; 
+border: none;
+}
+
+#setear:hover {
+background-color: #ffffff;
+}
+
+
+#parar {
+position: absolute;
+right:  -239px; 
+
+top: 20px;
+font-size: 100%;
+font-family: 'CartographCF-Bold', sans-serif;
+transform: translateY(-50%); 
+color: rgb(28, 197, 180);
+padding: 10px;
+width: 70px ; 
+text-align: center;
+border-radius: 40px;
+background-color: #fafafa; 
+border: none;
+}
+
+#parar:hover {
+background-color: #ffffff;
+}
+
+#iniciar {
+position: absolute;
+right:  -165px; 
+top: 20px;
+font-size: 100%;
+font-family: 'CartographCF-Bold', sans-serif;
+transform: translateY(-50%); 
+color: rgb(28, 197, 180);
+padding: 10px;
+width: 80px ; 
+text-align: center;
+border-radius: 40px;
+background-color: #fafafa; 
+border: none;
+}
+
+#iniciar:hover {
+background-color: #ffffff;
+}
+
+
+/* Estilo para los campos de entrada */
+.campo {
+font-family: 'CartographCF-Bold', sans-serif;
+transition: border-color 0.3s ease;
+text-align: center;
+border: 2px solid #c9c9c9;
+border-radius: 25px;
+outline: none;
+width: 100%; /* Ocupar todo el ancho disponible */
+padding: 8px;
+padding-left: 5px; 
+}
+
+/* Estilo para los campos de entrada cuando están enfocados */
+.campo:focus {
+border-color: #4135e6; /* Cambia el color del borde al hacer foco */
+}
+
+
+

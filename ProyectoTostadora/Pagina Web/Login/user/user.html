@@ -3,46 +3,275 @@
 <head>
   <title>Admin</title>
   <link rel="stylesheet" type="text/css" href="user.css">
-  <script type="module" src="user.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="user.js"></script>
 </head>
 <body>
   <header>
     <div class="navbar">
       <div class="logo">
-        <a href="./admin.html">
-        <h1>TostaCafe</h1>
+        <a href="http://raspberrypi.local:3000/admin.html">
+        <h1 id="Titulo" >TostaCafe</h1>
         </a>
       </div>
       <nav>
-        <a href="../Perfiles/index.html">Perfiles</a>
+        <a href="http://raspberrypi.local:3000/Lotes/lotes.html">Lotes</a>
+       
+        <a href="http://raspberrypi.local:3000/Perfiles/index.html">Perfiles</a>
+        <button href="#" id="crearusuario"></button>
         <a href="#" id="BotonCerrarSesion" class="logout">Cerrar sesión</a>
       </nav>
     </div>
   </header>
 
+  <div id="overlay" class="overlay">
+    <div id="formulario" class="formulario">
+        <h2>Crear Usuario</h2>
+        <form>
+            <!-- Campo de Nombre -->
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="username" name="username" class="campo" placeholder="Username" required>
+            </div>
+
+            <!-- Campo de Correo Electrónico -->
+            <div class="form-group">
+              <label for="rol">Rol:</label>
+              <select id="rol" name="rol" class="campo" required>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+              </select>
+          </div>
+
+            <!-- Campo de Contraseña -->
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" class="campo" placeholder="Contraseña segura" required>
+            </div>
+
+            <!-- Botón para enviar el formulario -->
+        </form>
+        <button id="registrar" type="submit">Registrar</button>
+        <button id="cerrarFormulario">Cerrar</button>
+    </div>
+</div>
+
+
+
+<div id="overlay1" class="overlay">
+  <div id="formulario1" class="formulario1">
+      <h2>Lote</h2>
+      <form>
+
+          <div class="primergrupo">
+          <!-- Campo de Nombre -->
+          <div class="form-group">
+              <label for="fecha">Fecha:</label>
+              <input type="datetime-local" id="fechaActual" name="username" class="campo" placeholder="fecha" required>
+          </div>
+
+          <div class="form-group">
+            <label for="Perfil">   Nombre Perfil:</label>
+            <input type="text" id="perfilname" name="perfilname" class="campo" placeholder="Italiano" required>
+           </div>
+           </div>
+
+
+
+
+           <div class="segundogrupo">
+           <div class="form-group">
+            <label for="pesoI">Peso Inicial:</label>
+            <input type="number" id="pesoI" name="pesoI" class="campo" placeholder="450 g" required>
+           </div>
+
+           <div class="form-group">
+            <label for="pesoF">Peso Final:</label>
+            <input type="number" id="pesoF" name="pesoF" class="campo" placeholder="240 g" required>
+           </div>
+           </div>
+
+          
+          
+        <div class="tercergrupo">
+
+          <div class="form-group">
+            <label for="tiempo">Tiempo:</label>
+            <input type="number" id="tiempoo"  required>
+           </div>
+
+           <div class="form-group">
+            <label for="temperaturaa">Temperatura:</label>
+            <input type="number" id="temperaturaa"  required>
+           </div>
+           
+
+           <div class="form-group">
+            <label for="rpm">RPM</label>
+            <input type="number" id="rpmm"  required>
+           </div>
+        
+        </div>
+        
+        <div class="cuartogrupo">
+
+          <div class="form-group">
+            <label for="tiempo">Variedad: </label>
+            <input type="text" id="tipocafe"  required>
+           </div>
+        
+        </div>
+
+
+          <!-- Botón para enviar el formulario -->
+      </form>
+      <div class="botones-contenedor">
+        <button id="registrar1" type="submit">Registrar</button>
+        <button id="cerrarFormulario1">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     
    
   <div id="chartContainer">
     <div>
-    <h1 id="nombreP">Sin Perfil</h1>
+      <div class="sidebar-container3">
+         <h1 id="nombreP">Sin Perfil</h1>
+      </div>
     </div>
-    <canvas id="realtimeChart" width="400" height="200"></canvas>
-    <span class="input" id="rpmint" role="textbox" contenteditable>4569</span>
-    <span class="input" id="tempFinal" role="textbox" contenteditable>150</span>
-    <p class="input" id="temperatura">90</p> 
-    <!-- recordar que el de tiempo y temperatura estan invertidos -->
-    <button id="botonTemperatura">Temperatura</button>
-    <span class="input" id="tiempoFinal" role="textbox" contenteditable>280</span>
-    <p class="input" id="tiempo">80</p>
-    <button id="botonTiempo">Tiempo</button>
+    
+
     <canvas id="backgroundChart"  width="400" height="200"> </canvas>
-    <button id="botonComenzar">Comenzar</button>
-    <button id="botonComenzarRPM">Comenzar RPM</button>
-    <button id="botonParar">Parar</button>
-    
-    
+
+    <canvas id="realtimeChart" width="400" height="200"></canvas>
+
+    <div class="sidebar-container">
+
+      <div class="sidebar-container4">
+        <h1 id="tempe2">Temperatura Actual</h1>
+        <h1 id="tempe1">100°C</h1>
+        
+      </div>
+
+
+      <div id="slider" class="range">
+        <div class="sliderValue">
+          <span>100</span>
+        </div>
+        <div class="field">
+          <div class="value left">0</div>
+          <input id="slitemperatura" type="range" min="180" max="240" value="210" steps="1">
+          <div class="value right">240</div>
+          <div class="etiqueta">Temp.</div>
+        </div>
+    </div>
+
+
+    <div id="slider1" class="range">
+      <div class="sliderValue">
+        <span>100</span>
+      </div>
+      <div class="field">
+        <div class="value left">7</div>
+        <input id="slitiempo" type="range" min="7" max="30" value="19" steps="1">
+        <div class="value right">30</div>
+        <div class="etiqueta">Time.</div>
+      </div>
+  </div>
+
+
+  <div id="slider2" class="range">
+    <div class="sliderValue">
+      <span>100</span>
+    </div>
+    <div class="field">
+      <div class="value left">0</div>
+      <input id="rangeInput" type="range" min="0" max="180" value="90" steps="10">
+      <div class="value right">100</div>
+      <div class="etiqueta">GAS.</div>
+    </div>
+</div>
+
+
+
+
+
+<div id="slider3" class="range">
+  <div class="sliderValue">
+    <span>100</span>
+  </div>
+  <div class="field">
+    <div class="value left">0</div>
+    <input id="rpmslider" type="range" min="0" max="100" value="50" steps="1">
+    <div class="value right">100</div>
+    <div class="etiqueta">RPM.</div>
   </div>
   
+</div>
+
+
+<div id="textoarea">
+<button class="input" id="setear" role="textbox" >Setear</button>
+<button class="input" id="parar" role="textbox" >Parar</button>
+<button class="input" id="iniciar" role="textbox" >Iniciar</button>
+</div>
+
+
+
+
+    <script>
+      //Aqui se le pone el JS para los sliders
+
+      const slideValues = document.querySelectorAll(".range .sliderValue span");
+      const inputSliders = document.querySelectorAll(".range input");
+
+      // Itera sobre todos los sliders
+      inputSliders.forEach((inputSlider, index) => {
+      const slideValue = slideValues[index];
+
+      inputSlider.oninput = () => {
+          let value = inputSlider.value;
+          slideValue.textContent = value;
+          slideValue.style.left = (value/2) + "%";
+          slideValue.classList.add("show");
+      };
+
+      inputSlider.onblur = () => {
+          slideValue.classList.remove("show");
+      };
+      });
+    </script>
+    
+
+    <!-- // Para el websocket del numero de temperatura -->
+    
+
+
+
+    </div> 
+
+
+
+  
+
+    
+
+  </div>
+
+
+ 
 </body>
 </html>
