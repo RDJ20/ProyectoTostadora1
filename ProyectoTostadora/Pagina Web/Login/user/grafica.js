@@ -430,11 +430,6 @@ actualizarTiempo(tomarDatos(), tomarDatos2());
 }
 
 
-function cerrarSesion() {
-  localStorage.removeItem('jwtToken');
-  window.location.href = 'http://raspberrypi.local:3000/index.html';
-  console.log("Funciona el boton de cerrar sesion");
-}
 
 
 
@@ -544,7 +539,16 @@ function registrarLote() {
 }
 
 
+function cerrarSesion() {
+  localStorage.removeItem('jwtToken');
+  window.location.href = 'http://raspberrypi.local:3000/index.html';
+  console.log("Funciona el boton de cerrar sesion");
+}
 
+
+document.getElementById("BotonCerrarSesion").addEventListener('click', function() {
+  cerrarSesion();
+});
 
 
 
@@ -555,6 +559,6 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("Guardar").addEventListener("click", enviarPerfil);
   document.getElementById("iniciar").addEventListener('click', comenzarGrafica);
   document.getElementById("setear") .addEventListener('click', setear         );
-  document.getElementById("BotonCerrarSesion").addEventListener('click', cerrarSesion);
+  
 });
 

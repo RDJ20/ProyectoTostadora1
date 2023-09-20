@@ -162,7 +162,7 @@ function cerrarSesion() {
 }
 
 
-ocument.getElementById("BotonCerrarSesion").addEventListener('click', function() {
+document.getElementById("BotonCerrarSesion").addEventListener('click', function() {
   cerrarSesion();
 });
 
