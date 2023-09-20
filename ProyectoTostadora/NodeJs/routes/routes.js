@@ -32,6 +32,7 @@ router.delete('/perfiles/:id', controllerPerfiles.eliminarPerfil);
 router.post('/perfiles', controllerPerfiles.insertarPerfil);
 
 router.post('/createUser', users.crearUsuario);
+router.get('/getUser', users.getUsuarios);
 
 router.get('/lotes',lotes.obtenerLotes);
 router.post('/lotes',lotes.crearLote);

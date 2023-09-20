@@ -55,3 +55,25 @@ exports.crearUsuario = (req, res) => {
     }
   );
 };
+
+
+
+exports.getUsuarios = (req, res) => {
+  pool.query(
+    'SELECT * FROM users',
+    [],
+    (error, results) => {
+      if (error) {
+        return res.status(500).json({
+          message: 'Error al obtener los usuarios',
+          error: error
+        });
+      }
+
+      res.status(200).json({
+        message: 'Usuarios obtenidos correctamente',
+        data: results
+      });
+    }
+  );
+};
