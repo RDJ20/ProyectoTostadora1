@@ -21,7 +21,7 @@
       </div>
       <nav>
         <a href="../Perfiles/index.html">Perfiles</a>
-        <a href="#">Crear Usuario</a>
+        <button id="downloadCSV">CSV</button>
         <a href="#" id="BotonCerrarSesion" class="logout">Cerrar sesión</a>
       </nav>
     </div>
@@ -105,6 +105,56 @@ function renderLotes(lotes) {
     recyclerView.appendChild(itemElement);
   });
 }
+document.getElementById('downloadCSV').addEventListener('click', function() {
+
+
+    fetch('http://raspberrypi.local:3000/api/lotes')
+    .then(response => response.json())
+    .then(data => {
+        const csvData = convertToCSV(data);
+        downloadCSV(csvData);
+    })
+    .catch(error => {
+        console.error('Error al obtener los datos:', error);
+    });
+});
+
+
+
+
+function convertToCSV(data) {
+    if (!Array.isArray(data)) {
+        data = [data];
+    }
+
+    // Convierte tus datos a formato CSV usando punto y coma como delimitador
+    const header = Object.keys(data[0]).join(';');
+    const rows = data.map(row => {
+        return Object.values(row).map(value => {
+            // Si el valor contiene comas, puntos y coma o saltos de línea, enciérralo entre comillas dobles
+            if (typeof value === 'string' && (value.includes(',') || value.includes(';') || value.includes('\n'))) {
+                return `"${value}"`;
+            }
+            return value;
+        }).join(';');
+    }).join('\n');
+
+    return header + '\n' + rows;
+}
+
+
+function downloadCSV(csvData) {
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'Lotes.csv';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
+
 
     </script>
 

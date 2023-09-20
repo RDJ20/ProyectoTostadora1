@@ -4,11 +4,13 @@
   }
 
 body {
+
 margin: 0;
 padding: 0;
 font-family: Arial, sans-serif;
 height: calc(100vh - 130px); 
 overflow: auto;
+flex-direction: row;
 }
 
 .navbar {
@@ -167,4 +169,20 @@ background-color: #5a3510;
     background-color: #5c00d5;
     border-radius: 10px;
     padding: 1%;
+}
+
+#downloadCSV{
+    color: #fff;
+    background-color: #00e340;
+    border: none;
+    font-size: 120%;
+    margin-right: 40px;
+    font-family: 'CartographCF-Bold', sans-serif;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+#downloadCSV:hover{
+    transform: scale(1.06); /* Aumenta el tamaño del elemento en un 10% */
+    transition: transform 0.1s ease;
 }
