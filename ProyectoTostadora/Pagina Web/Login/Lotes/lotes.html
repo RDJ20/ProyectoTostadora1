@@ -99,12 +99,42 @@ function renderLotes(lotes) {
             <div><span class="label">Temperatura:</span><br> ${lote.temperatura}°C</div>
           </div>
         </div>
+        <div class = "masderecha">
+            <div><span class="delete">X</span></div>
+        </div>
       </div>
     `;
 
     recyclerView.appendChild(itemElement);
+    const deleteButton = itemElement.querySelector('.delete');
+    deleteButton.addEventListener('click', function() {
+      // Confirmación antes de eliminar
+      if (confirm(`¿Estás seguro de que deseas eliminar el lote con ID ${lote.id}?`)) {
+        // Enviar solicitud DELETE
+        fetch(`http://raspberrypi.local:3000/api/lotes/${lote.id}`, {
+          method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Lote eliminado con éxito.');
+            // Opcional: eliminar visualmente el elemento de la lista
+            itemElement.remove();
+          } else {
+            alert('Error al eliminar el lote.');
+          }
+        })
+        .catch(error => {
+          console.error('Error al eliminar el lote:', error);
+          alert('Ocurrió un error al intentar eliminar el lote.');
+        });
+      }
+    });
   });
+  
 }
+
+
 document.getElementById('downloadCSV').addEventListener('click', function() {
 
 

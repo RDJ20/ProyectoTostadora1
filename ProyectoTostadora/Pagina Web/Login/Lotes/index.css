@@ -186,3 +186,18 @@ background-color: #5a3510;
     transform: scale(1.06); /* Aumenta el tamaño del elemento en un 10% */
     transition: transform 0.1s ease;
 }
+
+.delete{
+    font-family: 'CartographCF-Bold', sans-serif;
+    font-size: 1.2em;
+    color: #b9b9b9;
+}
+
+
+
+.delete:hover{
+    display: inline-block;
+    color: #000;
+    transform: scale(1.7); /* Aumenta el tamaño del elemento en un 20% */
+    transition: transform 0.4s ease; /* Agrega una transición suave al agrandar */
+ }

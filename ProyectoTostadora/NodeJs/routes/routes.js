@@ -35,7 +35,7 @@ router.post('/createUser', users.crearUsuario);
 
 router.get('/lotes',lotes.obtenerLotes);
 router.post('/lotes',lotes.crearLote);
-router.delete('/lotes',lotes.eliminarLote);
+router.delete('/lotes/:id',lotes.eliminarLote);
 
 router.get('/admin', mValidarTokenAdmin, (req, res) => {
     res.status(200).json({ message: 'Token válido' });
