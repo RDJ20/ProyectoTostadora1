@@ -167,3 +167,15 @@ window.addEventListener('scroll', function() {
     }
   }
 });
+
+
+function cerrarSesion() {
+  localStorage.removeItem('jwtToken');
+  window.location.href = 'http://raspberrypi.local:3000/index.html';
+  console.log("Funciona el boton de cerrar sesion");
+}
+
+
+ocument.getElementById("BotonCerrarSesion").addEventListener('click', function() {
+  cerrarSesion();
+});

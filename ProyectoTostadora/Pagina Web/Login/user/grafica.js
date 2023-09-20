@@ -555,6 +555,6 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("Guardar").addEventListener("click", enviarPerfil);
   document.getElementById("iniciar").addEventListener('click', comenzarGrafica);
   document.getElementById("setear") .addEventListener('click', setear         );
-  document.getElementById('BotonCerrarSesion').addEventListener('click', cerrarSesion);
+  document.getElementById("BotonCerrarSesion").addEventListener('click', cerrarSesion);
 });
 
